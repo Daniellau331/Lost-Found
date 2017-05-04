@@ -32,7 +32,6 @@ var cookieParser = require('cookie-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(express.static('public'));
 app.use(expressSession({ secret:'watchingfairies', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
