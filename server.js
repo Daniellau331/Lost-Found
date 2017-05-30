@@ -59,7 +59,7 @@ app.get('/login/google/return',
 
 // on successful auth, a cookie is set before redirecting
 // to the success view
-app.get('/setcookie',
+app.get('/setcookie', requireLogin,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       res.cookie('google-passport-example', new Date());
@@ -71,7 +71,7 @@ app.get('/setcookie',
 );
 
 // if cookie exists, success. otherwise, user is redirected to index
-app.get('/success',
+app.get('/success', requireLogin,
   function(req, res) {
     if(req.cookies['google-passport-example']) {
       res.sendFile(__dirname + '/views/success.html');
@@ -80,6 +80,14 @@ app.get('/success',
     }
   }
 );
+
+function requireLogin (req, res, next) {
+  if (!req.user) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function() {
