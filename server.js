@@ -32,7 +32,7 @@ var cookieParser = require('cookie-parser');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(expressSession({ secret:'watchingfairies', resave: true, saveUninitialized: true }));
+app.use(expressSession({ secret:'watchingfairies', resave: true, saveUninitialized: true, maxAge: (90 * 24 * 3600000) }));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -59,7 +59,7 @@ app.get('/login/google/return',
 
 // on successful auth, a cookie is set before redirecting
 // to the success view
-app.get('/setcookie', requireLogin,
+app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       res.cookie('google-passport-example', new Date());
@@ -82,6 +82,14 @@ app.get('/success', requireLogin,
 );
 
 function requireLogin (req, res, next) {
+  if (!req.cookies['google-passport-example']) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+function requireUser (req, res, next) {
   if (!req.user) {
     res.redirect('/');
   } else {
