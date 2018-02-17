@@ -1,0 +1,119 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: White;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: grey;
+    color:black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: grey;
+    color: white;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}
+
+.topnav {
+    background-color: black;
+    overflow: hidden;
+  
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  color: blue;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: #a6cedb;
+  border: 1px solid black;
+  box-shadow: 2px 2px grey;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3daed3;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
