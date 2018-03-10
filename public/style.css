@@ -1,4 +1,4 @@
-.button {
+button{
     background-color: #4CAF50; /* Green */
     border: none;
     color: #00b3b3;
@@ -8,4 +8,8 @@
     display: inline-block;
     font-size: 16px;
 
+}
+h1 {
+  font-weight: bold;
+  color: blue;
 }
