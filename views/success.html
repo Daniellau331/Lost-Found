@@ -1,8 +1,17 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
 <!DOCTYPE html>
 <html>
   <head>
     <center>
-    <title></title>
+    <title>Mission Control-Feed</title>
     <meta name="description" content="Mission Control Feed">
     <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
@@ -18,7 +27,129 @@
   <a href="#profile"><font font face = "Georgia">Profile</font></a>
   <a href="#classes"><font font face = "Georgia">Classes</font></a>
   <a href="#Log out"><font font face = "Georgia">Log Out</font></a>
-       
+<style>
+  .topnav a {
+    float: left;
+    color: White;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: grey;
+    color:black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: grey;
+    color: white;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}
+
+.topnav {
+    background-color: black;
+    overflow: hidden;
+  
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+}
+
+h1 {
+  font-weight: bold;
+  color: blue;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: white;
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+  font-size: 16px;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 15px;
+  background-color: #a6cedb;
+  border: 1px solid black;
+  box-shadow: 2px 2px grey;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3daed3;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  font-family: georgia, ariel, sans-serif;
+  list-style-type: none; 
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: white;
+  margin-bottom: 50px;
+  padding: 15px;
+  display: inline-block;
+
+}
+
+footer {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid lightgrey;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
+
+.nicejob {
+  text-decoration: line-through;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+
+
+      </style>
 </div>
   
   
@@ -38,7 +169,7 @@
       <center>
       <p><font font face ="Georgia">Post a Question Below </font></p>
       <form>
-        <input type="text" maxlength="100" placeholder="Post here">
+        <input type="text" maxlength="200" placeholder=" Post here">
         <button type="Post"> <font font face = "Georgia"> Post </font></button>
       </form>
       <section class="dreams">
