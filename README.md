@@ -15,17 +15,6 @@ Get a client ID and secret (these are like the API keys), and add them in the `.
 
 
 
-
-## View the Code
-On the back-end,
-- the app starts at `server.js`
-- frameworks and packages are in `package.json`
-- app secrets are safely stored in `.env`
-
-On the front-end,
-- edit `index.html` and `success.html`
-- drag in `assets`, like images or music, to add them to your project
-
 Made by Fog Creek
 -----------------
 

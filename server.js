@@ -21,38 +21,44 @@ passport.use(new GoogleStrategy(
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
   scope: ['profile']
 },
-  // function to go to once login is accomplished
+  // function to use to once login is accomplished, to get info about user from Google
   gotProfile));
-//
-// function(token, tokenSecret, profile, callback) {
-//   return callback(null, profile);
-// }));
 
 
-// passport.serializeUser(function(user, done) {
-//  done(null, user);
-// });
-
-// passport.deserializeUser(function(obj, done) {
-//  done(null, obj);
-// });
-
-// init project
+// Start setting up the server's pipeline
 
 const app = express();
 
+console.log("setting up pipeline")
+// pipeline stage that just echos url, for debugging.
+app.use("/", printURL);
 
-
-
+// always take HTTP message body and put it as a object into req.body
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());
-app.use(expressSession({ secret:'watchingfairies', resave: true, saveUninitialized: true, maxAge: (90 * 24 * 3600000) }));
-app.use(passport.initialize());
-app.use(passport.session());
 
-// index route
+// puts cookies into req 
+app.use(cookieParser());
+
+// handles encryption of cooikes, and deletes them when they expire
+app.use(expressSession(
+  { 
+  secret:'bananaBread', 
+  resave: true, 
+  saveUninitialized: true, 
+  maxAge: 6 * 60 * 60 * 1000, // Cookie time out - six hours in milliseconds
+  }));
+
+// Initializes request object for further handling by passport
+app.use(passport.initialize()); 
+
+// If there is a valid cookie, will call deserializeUser()
+// This pipeline stage is used once login is completed
+app.use(passport.session()); 
+
+
+// special case for base URL, goes to index.html
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 // on clicking "logoff" the cookie is cleared
@@ -118,6 +124,13 @@ var listener = app.listen(process.env.PORT, function() {
 
 
 // Some functions called by the handlers in the pipeline above
+
+// Function for debugging. Just prints the incoming URL, and calls next.
+// Never sends response back. 
+function printURL (req, res, next) {
+    console.log(req.url);
+    next();
+}
 
 // function that handles response from Google containint the profiles information. 
 // It is called by Passport after the second time passport.authenticate
