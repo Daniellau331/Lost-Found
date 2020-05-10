@@ -1,11 +1,20 @@
 Google Passport Example
 ========================
 
-This app is a building block for using Google OAuth using [passport-google-oauth20](https://github.com/jaredhanson/passport-google-oauth2).
+This app is a building block for using Google OAuth 2.0 using [passport-google-oauth20](https://github.com/jaredhanson/passport-google-oauth2).
 
 ## Getting set up
-You will need to [create an app](https://console.developers.google.com/apis/dashboard) and enable the Google Plus API. 
-- Then get the client ID and secret, and set them in the `.env` file. To do this, go to `Create Credentials` > `OAuth client ID`. You will then need to setup the OAuth content screen but all you have to do is set a product name, all other fields are optional. Click save and set the Application type to ‘Web application’. Then you need to provide the ‘Authorized redirect URIs’. This is your Glitch project URL, with '/login/google/return' appended to the end. Your Glitch project URL has the format `https://project-name.glitch.me`. Once done, click Create. Then copy and paste the generated client ID and secret into the `.env` file in your Glitch project.
+You will need to create a project on Google, and enable this project to 
+do OAuth 2.0 login.  As part of this process you will:
+
+Give Google the URLs of this app, and of an intermediate route which it will use in the login process
+
+Get a client ID and secret , and add them in the `.env` file. 
+
+[create a project] (https://console.developers.google.com/apis/dashboard) 
+
+
+
 
 ## View the Code
 On the back-end,

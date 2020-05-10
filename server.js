@@ -1,4 +1,4 @@
-
+// This is a heaviy commented version of 
 
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -8,11 +8,11 @@ passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: 'https://'+process.env.PROJECT_DOMAIN+'.glitch.me/auth/accepted',
-  // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
+  userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
   scope: ['profile']
 },
-function(token, tokenSecret, profile, cb) {
-  return cb(null, profile);
+function(token, tokenSecret, profile, callback) {
+  return callback(null, profile);
 }));
 
 
