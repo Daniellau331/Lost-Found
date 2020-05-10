@@ -1,65 +1,35 @@
 <!-- This is a static file -->
 <!-- served from your routes in server.js -->
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title> MissionControl-Login</title>
-    <meta name="description" content="an example app implementing google oauth with passport">
-    <link id="favicon" rel="icon" href="https://glitch.com/favicon-app.ico" type="image/x-icon">
     <meta charset="utf-8">
+    <title>Welcome to Glitch!</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1"
-    <link rel="stylesheet" href="/style.css">
-    
-    <style>
-    button {
-      background-color: #4a4b4c; 
-      border-radius: 50px;
-      border: 2px solid #000000;
-      color: #4a4b4c;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-    }
-    button:hover {
-    background-color: #4a4b4c;
-    color: #4a4b4c;
-    }
-      a:link {
-      color: #4a4b4c;
-    }
-    a:visited {
-      color: #cccccc;
-    }
-    a:hover {
-      color: #ffffff;
-    }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A cool thing made with Glitch">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
 
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/script.js" defer></script>
   </head>
-  <body background="https://static.tumblr.com/088e8c2ba04c4361ae2bb09a93921ef8/yl2oidf/I2soof9h7/tumblr_static_2od7ytzi5y0w8cwsc0wcg84ck_640_v2.png">
-    
-    <header>
-   
-       <center> 
-        
-          <h1>Mission Control - Login</h1> 
-      
-      </center>
-      
-       
+  <body>
+  <header>
+      <h1>Example showing Google Login</h1>
     </header>
+    To get this demo working, you'll need a Google Cloud Account, and a project in that account.
+    See the instructions on Canvas, under "Final Projects". 
 
     <main>
-      <center>
+        <a href="auth/google">
+          <button id="loginStartButton">Login with Google</button> 
+        </a>
+    </main>
 
-        <button><a href="/auth/google">Log In With Google</a></button>
-      </center>
-      
-        </main>
+    <footer>Made with <a href="https://glitch.com">Glitch</a>!</footer>
 
   </body>
 </html>

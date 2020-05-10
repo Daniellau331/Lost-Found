@@ -1,8 +1,0 @@
- AuthUserFile /home/username/.file-password
-  AuthGroupFile /dev/null
-  AuthName "My Protected Directory"
-  AuthType Basic
-  
-  <Limit GET POST PUT>
-  require user lskywalker hsolo owkenobi lorgana
-  </Limit>

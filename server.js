@@ -93,7 +93,7 @@ app.get('/auth/accepted',
 );
 
 // on successful auth, a cookie is set before redirecting
-// to the success view
+// to the protected homepage
 app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
@@ -105,32 +105,18 @@ app.get('/setcookie', requireUser,
   }
 );
 
+
 // if cookie exists, success. otherwise, user is redirected to index
 app.get('/success', requireLogin,
   function(req, res) {
     if(req.cookies['google-passport-example']) {
-      res.sendFile(__dirname + '/views/success.html');
+      res.sendFile(__dirname + '/user/success.html');
     } else {
       res.redirect('/');
     }
   }
 );
 
-function requireLogin (req, res, next) {
-  if (!req.cookies['google-passport-example']) {
-    res.redirect('/');
-  } else {
-    next();
-  }
-};
-
-function requireUser (req, res, next) {
-  if (!req.user) {
-    res.redirect('/');
-  } else {
-    next();
-  }
-};
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function() {
@@ -139,6 +125,7 @@ var listener = app.listen(process.env.PORT, function() {
 
 
 // Some functions called by the handlers in the pipeline above
+
 
 // Function for debugging. Just prints the incoming URL, and calls next.
 // Never sends response back. 
@@ -188,3 +175,19 @@ passport.deserializeUser((dbRowID, done) => {
     let userData = {userData: "maybe data from db row goes here"};
     done(null, userData);
 });
+
+function requireLogin (req, res, next) {
+  if (!req.cookies['google-passport-example']) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+function requireUser (req, res, next) {
+  if (!req.user) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};

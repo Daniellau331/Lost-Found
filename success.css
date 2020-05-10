@@ -1,0 +1,13 @@
+main {
+  display: flex;
+  justify-content: center;
+}
+
+img {
+  width: 100%;
+}
+
+div.imageWrapper {
+  width: 100%;
+  max-width: 400px;
+}
