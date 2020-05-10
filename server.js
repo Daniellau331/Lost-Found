@@ -1,5 +1,4 @@
-// server.js
-// where your node app starts
+
 
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -8,15 +7,20 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 passport.use(new GoogleStrategy({
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'https://'+process.env.PROJECT_DOMAIN+'.glitch.me/login/google/return',
-  scope: 'https://www.googleapis.com/auth/plus.login'
+  callbackURL: 'https://'+process.env.PROJECT_DOMAIN+'.glitch.me/auth/accepted',
+  // userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
+  scope: ['profile']
 },
 function(token, tokenSecret, profile, cb) {
   return cb(null, profile);
 }));
+
+
 passport.serializeUser(function(user, done) {
   done(null, user);
 });
+
+
 passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
@@ -51,7 +55,7 @@ app.get('/logoff',
 
 app.get('/auth/google', passport.authenticate('google'));
 
-app.get('/login/google/return', 
+app.get('/auth/accepted', 
   passport.authenticate('google', 
     { successRedirect: '/setcookie', failureRedirect: '/' }
   )
