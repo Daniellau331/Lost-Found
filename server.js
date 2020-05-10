@@ -18,10 +18,11 @@ passport.use(new GoogleStrategy(
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: 'https://ecs162-login-demo.glitch.me/auth/accepted',
-  userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
-  scope: ['profile']
+  userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // where to go for info
+  scope: ['profile']  // the information we will ask for from Google
 },
   // function to use to once login is accomplished, to get info about user from Google
+  // it is defined down below.
   gotProfile));
 
 
@@ -36,7 +37,7 @@ app.use("/", printURL);
 // always take HTTP message body and put it as a object into req.body
 app.use(bodyParser.urlencoded({extended: true}));
 
-// puts cookies into req 
+// puts cookies into properties in req
 app.use(cookieParser());
 
 // handles encryption of cooikes, and deletes them when they expire
@@ -55,12 +56,15 @@ app.use(passport.initialize());
 // This pipeline stage is used once login is completed
 app.use(passport.session()); 
 
+// Public files are still serverd as usual out of /public
+app.get('/*',express.static('public'));
 
 // special case for base URL, goes to index.html
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+/*
 // on clicking "logoff" the cookie is cleared
 app.get('/logoff',
   function(req, res) {
@@ -68,8 +72,19 @@ app.get('/logoff',
     res.redirect('/');
   }
 );
+*/
 
+// Now the pipeline stages that handle the login process itself
+
+// Handler for url that starts off login with Google.
+// The app (in public/index.html) links to here (note not an AJAX request!)
+// Kicks off login process by telling Browser to redirect to Google.
 app.get('/auth/google', passport.authenticate('google'));
+// The first time its called, passport.authenticate sends 302 
+// response (redirect) to the Browser
+// with fancy redirect URL that Browser will send to Google,
+// containing request for profile, and
+// using this app's client ID string to identify the app trying to log in. 
 
 app.get('/auth/accepted', 
   passport.authenticate('google', 
