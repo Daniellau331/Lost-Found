@@ -15,23 +15,12 @@ body {
 
 
 h1 {
-  font-style: italic;
-  color: #373fff;
-  max-width: calc(100% - 5rem);
-  line-height: 1.1;
+  color: var(--dark-color);
+  max-width: 90;
   text-align: center;
 }
 
 
-
-input {
-  border: 1px solid silver;
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
-  padding: 5px;
-  width: 100%;
-}
 
 button {
   background-color: var(--main-color);

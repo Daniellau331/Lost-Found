@@ -8,9 +8,10 @@ const assets = require('./assets');
 
 // and some new ones related to doing the login process
 const passport = require('passport');
+// There are other strategies, including Facebook and Spotify
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
-// and some related to cookies, which indicate that the user of the app
+// Some modules related to cookies, which indicate that the user
 // is logged in
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
@@ -40,17 +41,18 @@ console.log("setting up pipeline")
 // take HTTP message body and put it as a string into req.body
 app.use(bodyParser.urlencoded({extended: true}));
 
-// puts cookies into properties in req
+// puts cookies into req.cookies
 app.use(cookieParser());
 
-// pipeline stage that just echos the url, for debugging.
+// pipeline stage that echos the url and shows the cookies, for debugging.
 app.use("/", printIncomingRequest);
 
 
-// handles encryption of cooikes, and deletes them when they expire
+// express handles decryption of cooikes, storage of data about the session, 
+// and deletes cookies when they expire
 app.use(expressSession(
   { 
-  secret:'bananaBread', 
+  secret:'bananaBread',  // a random string used for encryption
   resave: true, 
   saveUninitialized: true, 
   maxAge: 6 * 60 * 60 * 1000, // Cookie time out - six hours in milliseconds
