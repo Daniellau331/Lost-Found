@@ -37,14 +37,15 @@ passport.use(new GoogleStrategy(
 const app = express();
 console.log("setting up pipeline")
 
-// pipeline stage that just echos the url, for debugging.
-app.use("/", printURL);
-
 // take HTTP message body and put it as a string into req.body
 app.use(bodyParser.urlencoded({extended: true}));
 
 // puts cookies into properties in req
 app.use(cookieParser());
+
+// pipeline stage that just echos the url, for debugging.
+app.use("/", printIncomingRequest);
+
 
 // handles encryption of cooikes, and deletes them when they expire
 app.use(expressSession(
@@ -139,8 +140,11 @@ var listener = app.listen(process.env.PORT, function() {
 
 // Function for debugging. Just prints the incoming URL, and calls next.
 // Never sends response back. 
-function printURL (req, res, next) {
-    console.log(req.url);
+function printIncomingRequest (req, res, next) {
+    console.log("Serving",req.url);
+    if (req.cookies) {
+      console.log("cookies",req.cookies)
+    }
     next();
 }
 
