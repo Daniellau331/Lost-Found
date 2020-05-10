@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const assets = require('./assets');
 // const sqlite3 = require('sqlite3');  // we'll need this later
 
 const passport = require('passport');
@@ -63,6 +64,8 @@ app.get('/*',express.static('public'));
 app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
+
+app.use("/assets", assets);
 
 /*
 // on clicking "logoff" the cookie is cleared
