@@ -1,7 +1,9 @@
-// This is a heaviy commented version of 
+// This is a heaviy commented version of the Glitch app "mission-control-login"
 
-var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const express = require('express');
+const passport = require('passport');
+
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 // the process.env values are set in .env
 passport.use(new GoogleStrategy({
@@ -26,7 +28,7 @@ passport.deserializeUser(function(obj, done) {
 });
 
 // init project
-var express = require('express');
+
 var app = express();
 var expressSession = require('express-session');
 

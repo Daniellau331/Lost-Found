@@ -9,7 +9,7 @@ do OAuth 2.0 login.  As part of this process you will:
 
 Give Google the URLs of this app, and of an intermediate route which it will use in the login process
 
-Get a client ID and secret , and add them in the `.env` file. 
+Get a client ID and secret (these are like the API keys), and add them in the `.env` file. 
 
 [create a project] (https://console.developers.google.com/apis/dashboard) 
 
