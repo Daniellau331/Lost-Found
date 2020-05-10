@@ -1,20 +1,26 @@
-// This is a heaviy commented version of the Glitch app "mission-control-login"
+// We need many modules
 
+// some of the ones we have used before
 const express = require('express');
 const bodyParser = require('body-parser');
 const assets = require('./assets');
 // const sqlite3 = require('sqlite3');  // we'll need this later
 
+// and some new ones related to doing the login process
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const expressSession = require('express-session');
-// cookies are used to save authentication
+
+// and some related to cookies, which indicate that the user of the app
+// is logged in
 const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
 
-
+// Setup passport, passing it information about what we want to do
 passport.use(new GoogleStrategy(
-  // Object containing data sent to Google to kick off the login process
-  // the process.env values are found in the key.env file of your app
+  // object containing data to be sent to Google to kick off the login process
+  // the process.env values come from the key.env file of your app
+  // They won't be found unless you have put in a client ID and secret for 
+  // the project you set up at Google
   {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
@@ -22,20 +28,19 @@ passport.use(new GoogleStrategy(
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // where to go for info
   scope: ['profile']  // the information we will ask for from Google
 },
-  // function to use to once login is accomplished, to get info about user from Google
+  // function to call to once login is accomplished, to get info about user from Google;
   // it is defined down below.
   gotProfile));
 
 
-// Start setting up the server's pipeline
-
+// Start setting up the Server pipeline
 const app = express();
-
 console.log("setting up pipeline")
-// pipeline stage that just echos url, for debugging.
+
+// pipeline stage that just echos the url, for debugging.
 app.use("/", printURL);
 
-// always take HTTP message body and put it as a object into req.body
+// take HTTP message body and put it as a string into req.body
 app.use(bodyParser.urlencoded({extended: true}));
 
 // puts cookies into properties in req

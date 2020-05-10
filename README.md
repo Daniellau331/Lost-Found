@@ -20,9 +20,9 @@ Authorship
 Based on Jared Hanson's [passport-google-oauth20](https://github.com/jaredhanson/passport-google-oauth2) 
 exmaple.
 
-Original Glitch App Made by Fog Creek [mission-control-login]()
+Original Glitch App Made by Fog Creek [mission-control-login](https://glitch.com/~mission-control-login)
 
 
-Remixed, edited and expanded by Nina Amenta for ECS 162
+Remixed and modified by Nina Amenta for ECS 162
 
 
