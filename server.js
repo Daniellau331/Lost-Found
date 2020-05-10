@@ -102,7 +102,7 @@ app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       res.cookie('google-passport-example', new Date());
-      res.redirect('/user/success');
+      res.redirect('/user/hello.html');
     } else {
        res.redirect('/');
     }
@@ -110,12 +110,12 @@ app.get('/setcookie', requireUser,
 );
 
 
-// If cookie exists, get files out of /user. 
+// If cookie exists, get files out of /user using a static server. 
 // Otherwise, user is redirected to public splash page (/index)
 app.get('/user/*', requireLogin,
-  function(req, res) {
+  function(req, res, next) {
     if(req.cookies['google-passport-example']) {
-      express.static('.') ;
+      express.static('.')(req,res,next) ;
     } else {
       res.redirect('/');
     }

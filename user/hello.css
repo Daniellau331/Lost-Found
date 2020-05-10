@@ -3,6 +3,10 @@ main {
   justify-content: center;
 }
 
+h2 {
+  text-align: center;
+}
+
 img {
   width: 100%;
 }
