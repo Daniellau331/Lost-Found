@@ -89,6 +89,7 @@ app.get('/auth/google', passport.authenticate('google'));
 // containing request for profile, and
 // using this app's client ID string to identify the app trying to log in. 
 
+
 app.get('/auth/accepted', 
   passport.authenticate('google', 
     { successRedirect: '/setcookie', failureRedirect: '/' }
@@ -101,7 +102,7 @@ app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       res.cookie('google-passport-example', new Date());
-      res.redirect('/success');
+      res.redirect('/user/success');
     } else {
        res.redirect('/');
     }
@@ -109,11 +110,12 @@ app.get('/setcookie', requireUser,
 );
 
 
-// if cookie exists, success. otherwise, user is redirected to index
-app.get('/success', requireLogin,
+// If cookie exists, get files out of /user. 
+// Otherwise, user is redirected to public splash page (/index)
+app.get('/user/*', requireLogin,
   function(req, res) {
     if(req.cookies['google-passport-example']) {
-      res.sendFile(__dirname + '/user/success.html');
+      express.static('.') ;
     } else {
       res.redirect('/');
     }
