@@ -119,6 +119,7 @@ app.get('/auth/google', passport.authenticate('google'));
 // temporary key we got from Google.
 // After that, it calls gotProfile, so we can, for instance, store the profile in 
 // a user database table. 
+// Then it will call passport.serializeUser, also defined below.
 // Then it either sends a response to Google redirecting to the /setcookie endpoint, below
 // or, if failure, it goes back to the public splash page. 
 app.get('/auth/accepted', 
@@ -189,6 +190,9 @@ function gotProfile(accessToken, refreshToken, profile, done) {
 // Part of Server's sesssion set-up.  
 // The second operand of "done" becomes the input to deserializeUser
 // on every subsequent HTTP request with this session's cookie. 
+// For instance, if there was some specific profile information, or
+// some user history with this Website we pull out of the user table
+// using dbRowID.  But for now we'll just pass out the dbRowID itself.
 passport.serializeUser((dbRowID, done) => {
     console.log("SerializeUser. Input is",dbRowID);
     done(null, dbRowID);
@@ -196,10 +200,9 @@ passport.serializeUser((dbRowID, done) => {
 
 // Called by passport.session pipeline stage on every HTTP request with
 // a current session cookie (so, while user is logged in)
-// Where we should lookup user database info which later pipeline stages 
-// might need when handling user queries. 
-// Whatever we pass in the "done" callback goes into the req.user property
-// and can be grabbed from there by our middleware functions
+// This time, 
+// whatever we pass in the "done" callback goes into the req.user property
+// and can be grabbed from there by other middleware functions
 passport.deserializeUser((dbRowID, done) => {
     console.log("deserializeUser. Input is:", dbRowID);
     // here is a good place to look up user data in database using
