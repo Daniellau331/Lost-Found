@@ -123,7 +123,7 @@ app.get('/auth/google', passport.authenticate('google'));
 // temporary key we got from Google.
 // After that, it calls gotProfile, so we can, for instance, store the profile in 
 // a user database table. 
-// Then it either sends a response redirecting to the /setcookie endpoint, below
+// Then it either sends a response to Google redirecting to the /setcookie endpoint, below
 // or, if failure, it goes back to the public splash page. 
 app.get('/auth/accepted', 
   passport.authenticate('google', 
@@ -135,6 +135,9 @@ app.get('/auth/accepted',
 // to the protected homepage
 // this route uses two middleware functions.
 // requireUser is defined below; it makes sure req.user is defined
+// The second one makse sure the referred request came from Google, and if so,
+// goes ahead and marks the date of the cookie in a property called 
+// google-passport-example
 app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
