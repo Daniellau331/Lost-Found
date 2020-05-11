@@ -47,6 +47,7 @@ app.use(cookieParser());
 // pipeline stage that echos the url and shows the cookies, for debugging.
 app.use("/", printIncomingRequest);
 
+// Now some stages that decrypt and use cookies
 
 // express handles decryption of cooikes, storage of data about the session, 
 // and deletes cookies when they expire
