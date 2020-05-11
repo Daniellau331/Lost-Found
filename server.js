@@ -229,7 +229,8 @@ function requireUser (req, res, next) {
 };
 
 function requireLogin (req, res, next) {
-  if (!req.cookies['google-passport-example']) {
+  console.log("checking:",req.cookies);
+  if (!req.cookies['ecs162-session-cookie']) {
     res.redirect('/');
   } else {
     next();
