@@ -91,10 +91,12 @@ app.use("/assets", assets);
 
 // stage to serve files from /user, only works if user in logged in
 
-// If cookie exists, get files out of /user using a static server. 
+// If user data is populated by deserializeUser and the
+// unencrypted cookie is present, get files out 
+// of /user using a static server. 
 // Otherwise, user is redirected to public splash page (/index) by
 // requireLogin (defined below)
-app.get('/user/*', requireLogin, express.static('.'));
+app.get('/user/*', requireUser, requireLogin, express.static('.'));
 
 
 
