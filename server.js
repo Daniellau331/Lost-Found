@@ -53,8 +53,13 @@ app.use("/", printIncomingRequest);
 // and deletes cookies when they expire
 app.use(expressSession(
   { 
-  secret:'bananaBread',  // a random string used for encryption of cookies
-  maxAge: 6 * 60 * 60 * 1000 // Cookie time out - six hours in milliseconds
+    secret:'bananaBread',  // a random string used for encryption of cookies
+    maxAge: 6 * 60 * 60 * 1000, // Cookie time out - six hours in milliseconds
+    // setting these to default values to prevent warning messages
+    resave: true,
+    saveUninitialized: false,
+    // make a named session cookie; makes one called "connect.sid" as well
+    name: "ecs162-session-cookie"
   }));
 
 // Initializes request object for further handling by passport
