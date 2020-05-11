@@ -1,2 +1,2 @@
 let msg = document.getElementById("cookieMessage");
-msg.textContent = msg.textContent+decodeURI(document.cookie);
+msg.textContent = msg.textContent+decodeURIComponent(document.cookie);
