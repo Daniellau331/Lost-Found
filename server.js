@@ -57,7 +57,7 @@ app.use(expressSession(
   // resave: false,  // see documentation of expressSession
   // saveUninitialized: true, 
   // saveUninitialised: false,
-  // httpOnly: false,
+  // httpOnly: true,
   maxAge: 6 * 60 * 60 * 1000 // Cookie time out - six hours in milliseconds
   }));
 
