@@ -93,6 +93,14 @@ app.get('/', function(req, res) {
 // Glitch assests directory 
 app.use("/assets", assets);
 
+// stage to serve files from /user, only works if user in logged in
+
+// If cookie exists, get files out of /user using a static server. 
+// Otherwise, user is redirected to public splash page (/index) by
+// requireLogin (defined below)
+app.get('/user/*', requireLogin, express.static('.'));
+
+
 
 
 // Now the pipeline stages that handle the login process itself
@@ -113,19 +121,24 @@ app.get('/auth/google', passport.authenticate('google'));
 // This second call to "passport.authenticate" will issue Server's own HTTPS 
 // request to Google to access the user's profile information with the  	
 // temporary key we got from Google.
-// After that, it calls gotProfile, so we can, for instance, st
-// Then it either goes to 
+// After that, it calls gotProfile, so we can, for instance, store the profile in 
+// a user database table. 
+// Then it either sends a response redirecting to the /setcookie endpoint, below
+// or, if failure, it goes back to the public splash page. 
 app.get('/auth/accepted', 
   passport.authenticate('google', 
     { successRedirect: '/setcookie', failureRedirect: '/' }
   )
 );
 
-// on successful auth, a cookie is set before redirecting
+// One more time! a cookie is set before redirecting
 // to the protected homepage
+// this route uses two middleware functions.
+// requireUser is defined below; it makes sure req.user is defined
 app.get('/setcookie', requireUser,
   function(req, res) {
     if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
+      // mark the birth of this cookie
       res.cookie('google-passport-example', new Date());
       res.redirect('/user/hello.html');
     } else {
@@ -134,20 +147,6 @@ app.get('/setcookie', requireUser,
   }
 );
 
-
-// stage to serve files from /user
-
-// If cookie exists, get files out of /user using a static server. 
-// Otherwise, user is redirected to public splash page (/index)
-app.get('/user/*', requireLogin,
-  function(req, res, next) {
-    if(req.cookies['google-passport-example']) {
-      express.static('.')(req,res,next) ;
-    } else {
-      res.redirect('/');
-    }
-  }
-);
 
 
 // listen for requests :)
@@ -211,6 +210,15 @@ passport.deserializeUser((dbRowID, done) => {
     done(null, userData);
 });
 
+function requireUser (req, res, next) {
+  if (!req.user) {
+    res.redirect('/');
+  } else {
+    console.log("user is",req.user);
+    next();
+  }
+};
+
 function requireLogin (req, res, next) {
   if (!req.cookies['google-passport-example']) {
     res.redirect('/');
@@ -219,10 +227,3 @@ function requireLogin (req, res, next) {
   }
 };
 
-function requireUser (req, res, next) {
-  if (!req.user) {
-    res.redirect('/');
-  } else {
-    next();
-  }
-};
