@@ -52,12 +52,12 @@ app.use("/", printIncomingRequest);
 // and deletes cookies when they expire
 app.use(expressSession(
   { 
-  secret:'bananaBread',  // a random string used for encryption
+  secret:'bananaBread',  // a random string used for encryption of cookies
   // resave: true, 
-  resave: false,  // see documentation of expressSession
+  // resave: false,  // see documentation of expressSession
   // saveUninitialized: true, 
-  saveUninitialised: false,
-  httpOnly: false,
+  // saveUninitialised: false,
+  // httpOnly: false,
   maxAge: 6 * 60 * 60 * 1000 // Cookie time out - six hours in milliseconds
   }));
 
@@ -65,8 +65,22 @@ app.use(expressSession(
 app.use(passport.initialize()); 
 
 // If there is a valid cookie, will call deserializeUser()
-// This pipeline stage is used once login is completed
+// which is defined below.  We can use this to get user data out of
+// a user database table, if we make one.
+// Does nothing if there is no cookie
 app.use(passport.session()); 
+
+// currently not used
+// using this route, we can clear the cookie and close the session
+app.get('/logoff',
+  function(req, res) {
+    res.clearCookie('google-passport-example');
+    res.redirect('/');
+  }
+);
+
+
+// The usual pipeline stages
 
 // Public files are still serverd as usual out of /public
 app.get('/*',express.static('public'));
@@ -76,17 +90,10 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+// Glitch assests directory 
 app.use("/assets", assets);
 
-/*
-// on clicking "logoff" the cookie is cleared
-app.get('/logoff',
-  function(req, res) {
-    res.clearCookie('google-passport-example');
-    res.redirect('/');
-  }
-);
-*/
+
 
 // Now the pipeline stages that handle the login process itself
 
@@ -98,9 +105,16 @@ app.get('/auth/google', passport.authenticate('google'));
 // response (redirect) to the Browser
 // with fancy redirect URL that Browser will send to Google,
 // containing request for profile, and
-// using this app's client ID string to identify the app trying to log in. 
+// using this app's client ID string to identify the app trying to log in.
+// The Browser passes this on to Google, which brings up the login screen. 
 
 
+// Google redirects here after user successfully logs in. 
+// This second call to "passport.authenticate" will issue Server's own HTTPS 
+// request to Google to access the user's profile information with the  	
+// temporary key we got from Google.
+// After that, it calls gotProfile, so we can, for instance, st
+// Then it either goes to 
 app.get('/auth/accepted', 
   passport.authenticate('google', 
     { successRedirect: '/setcookie', failureRedirect: '/' }
@@ -120,6 +134,8 @@ app.get('/setcookie', requireUser,
   }
 );
 
+
+// stage to serve files from /user
 
 // If cookie exists, get files out of /user using a static server. 
 // Otherwise, user is redirected to public splash page (/index)
