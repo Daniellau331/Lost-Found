@@ -60,7 +60,7 @@ app.use(expressSession(
 // Initializes request object for further handling by passport
 app.use(passport.initialize()); 
 
-// If there is a valid cookie, will call deserializeUser()
+// If there is a valid cookie, will call passport.deserializeUser()
 // which is defined below.  We can use this to get user data out of
 // a user database table, if we make one.
 // Does nothing if there is no cookie
