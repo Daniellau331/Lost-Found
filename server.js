@@ -53,11 +53,6 @@ app.use("/", printIncomingRequest);
 app.use(expressSession(
   { 
   secret:'bananaBread',  // a random string used for encryption of cookies
-  // resave: true, 
-  // resave: false,  // see documentation of expressSession
-  // saveUninitialized: true, 
-  // saveUninitialised: false,
-  // httpOnly: true,
   maxAge: 6 * 60 * 60 * 1000 // Cookie time out - six hours in milliseconds
   }));
 
