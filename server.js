@@ -96,8 +96,8 @@ app.use("/assets", assets);
 
 // stage to serve files from /user, only works if user in logged in
 
-// If user data is populated by deserializeUser and the
-// unencrypted cookie is present, get files out 
+// If user data is populated (by deserializeUser) and the
+// session cookie is present, get files out 
 // of /user using a static server. 
 // Otherwise, user is redirected to public splash page (/index) by
 // requireLogin (defined below)
