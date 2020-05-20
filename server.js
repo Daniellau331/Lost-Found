@@ -138,7 +138,7 @@ app.get('/setcookie', requireUser,
     // if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       // mark the birth of this cookie
   
-      // set a public cookie; the session cookie was set by Passport
+      // set a public cookie; the session cookie was already set by Passport
       res.cookie('google-passport-example', new Date());
       res.redirect('/user/hello.html');
     //} else {
