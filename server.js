@@ -75,7 +75,9 @@ app.use(passport.session());
 // using this route, we can clear the cookie and close the session
 app.get('/logoff',
   function(req, res) {
+    // clear both the public and the named session cookie
     res.clearCookie('google-passport-example');
+    res.clearCookie('ecs162-session-cookie');
     res.redirect('/');
   }
 );
@@ -139,14 +141,14 @@ app.get('/auth/accepted',
 // to the protected homepage
 // this route uses two middleware functions.
 // requireUser is defined below; it makes sure req.user is defined
-// The second one makse sure the referred request came from Google, and if so,
-// goes ahead and marks the date of the cookie in a property called 
+// the second one makes a public cookie called
 // google-passport-example
 app.get('/setcookie', requireUser,
   function(req, res) {
-    // console.log("setcookie", req.get('Referrer'));
     // if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       // mark the birth of this cookie
+  
+      // set a public cookie; the session cookie was set by Passport
       res.cookie('google-passport-example', new Date());
       res.redirect('/user/hello.html');
     //} else {
