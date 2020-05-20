@@ -144,14 +144,14 @@ app.get('/auth/accepted',
 // google-passport-example
 app.get('/setcookie', requireUser,
   function(req, res) {
-    console.log("setcookie");
-    if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
+    // console.log("setcookie", req.get('Referrer'));
+    // if(req.get('Referrer') && req.get('Referrer').indexOf("google.com")!=-1){
       // mark the birth of this cookie
       res.cookie('google-passport-example', new Date());
       res.redirect('/user/hello.html');
-    } else {
-       res.redirect('/');
-    }
+    //} else {
+    //   res.redirect('/');
+    //}
   }
 );
 
@@ -221,6 +221,7 @@ passport.deserializeUser((dbRowID, done) => {
 });
 
 function requireUser (req, res, next) {
+  console.log("require user",req.user)
   if (!req.user) {
     res.redirect('/');
   } else {
