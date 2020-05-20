@@ -71,16 +71,6 @@ app.use(passport.initialize());
 // Does nothing if there is no cookie
 app.use(passport.session()); 
 
-// currently not used
-// using this route, we can clear the cookie and close the session
-app.get('/logoff',
-  function(req, res) {
-    // clear both the public and the named session cookie
-    res.clearCookie('google-passport-example');
-    res.clearCookie('ecs162-session-cookie');
-    res.redirect('/');
-  }
-);
 
 
 // The usual pipeline stages
@@ -156,6 +146,19 @@ app.get('/setcookie', requireUser,
     //}
   }
 );
+
+
+// currently not used
+// using this route, we can clear the cookie and close the session
+app.get('/user/logoff',
+  function(req, res) {
+    // clear both the public and the named session cookie
+    res.clearCookie('google-passport-example');
+    res.clearCookie('ecs162-session-cookie');
+    res.redirect('/');
+  }
+);
+
 
 
 
