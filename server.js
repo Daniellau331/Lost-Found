@@ -37,6 +37,7 @@ passport.use(new GoogleStrategy(
 // Start setting up the Server pipeline
 const app = express();
 console.log("setting up pipeline")
+console.log(__dirname + "/auth/accepted");
 
 // take HTTP message body and put it as a string into req.body
 app.use(bodyParser.urlencoded({extended: true}));
