@@ -12,7 +12,7 @@ Give Google the URLs of this app, and of an intermediate route which it will use
 
 Get a client ID and secret (these are like the API keys), and add them in the `.env` file. See the [detailed instructions](https://web.cs.ucdavis.edu/~amenta/s20/oauthClientID.html).
 
-
+You also have to edit server.js to send Google the redirect address with your app's name in it.  Look for where it says "CHANGE THE FOLLOWING LINE".
 
 Files in the user/ directory are protected and available only to users who are logged in. 
 
