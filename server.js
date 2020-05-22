@@ -25,7 +25,8 @@ passport.use(new GoogleStrategy(
   {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: 'https://ecs162-login-demo.glitch.me/auth/accepted',
+  // CHANGE THE FOLLOWING LINE TO USE THE NAME OF YOUR APP
+  callbackURL: 'https://ecs162-login-demo.glitch.me/auth/accepted',  
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // where to go for info
   scope: ['profile']  // the information we will ask for from Google
 },
@@ -37,7 +38,6 @@ passport.use(new GoogleStrategy(
 // Start setting up the Server pipeline
 const app = express();
 console.log("setting up pipeline")
-console.log(__dirname + "/auth/accepted");
 
 // take HTTP message body and put it as a string into req.body
 app.use(bodyParser.urlencoded({extended: true}));

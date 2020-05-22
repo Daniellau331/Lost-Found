@@ -10,9 +10,9 @@ do OAuth 2.0 login.  As part of this process you will:
 
 Give Google the URLs of this app, and of an intermediate route which it will use in the login process
 
-Get a client ID and secret (these are like the API keys), and add them in the `.env` file. 
+Get a client ID and secret (these are like the API keys), and add them in the `.env` file. See the [detailed instructions](https://web.cs.ucdavis.edu/~amenta/s20/oauthClientID.html).
 
-See the [detailed instructions](https://web.cs.ucdavis.edu/~amenta/s20/oauthClientID.html)
+
 
 Files in the user/ directory are protected and available only to users who are logged in. 
 
