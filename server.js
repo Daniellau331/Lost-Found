@@ -4,7 +4,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const assets = require('./assets');
-// const sqlite3 = require('sqlite3');  // we'll need this later
+const sqlite3 = require('sqlite3');  // we'll need this later
 
 // and some new ones related to doing the login process
 const passport = require('passport');
