@@ -6,22 +6,15 @@
 
 body {
   font-family: sans-serif;
-}
-
-
-main {
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: row;
-  align-items: center;
-}
-
-img {
-  height: 100%;
+  width: 100%;
+  min-height: 100vh;
 }
 
 .libImg {
-  height: 100%;
-  max-height: 400px;
   width: 50%;
 }
 
@@ -29,7 +22,6 @@ img {
   display: flex;
   flex-direction: column;
   background: #365c85;
-  height: 100%;
   width: 50%;
 }
 
