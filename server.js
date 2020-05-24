@@ -25,8 +25,7 @@ passport.use(new GoogleStrategy(
   {
   clientID: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  // CHANGE THE FOLLOWING LINE TO USE THE NAME OF YOUR APP
-  callbackURL: 'https://ecs162-login-demo.glitch.me/auth/accepted',  
+  callbackURL: 'https://ylx-laf-project.glitch.me/auth/accepted',  
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // where to go for info
   scope: ['profile']  // the information we will ask for from Google
 },
