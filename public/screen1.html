@@ -17,6 +17,7 @@
 
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/reset.css" />
+    <link rel="stylesheet" href="/style.css" />
     <link rel="stylesheet" href="/screen1.css" />
 
     <!-- import the webpage's client-side javascript file -->
@@ -28,12 +29,15 @@
       </div>
       
       <div id="login">
+        <div id="lafLogo">
+          <img src="/assets/Logo.png"/>
+        </div>
         <a href="auth/google">
-          <button class="centered" id="loginStartButton">
+          <button id="loginStartButton">
             <img src="/assets/google.jpg" id="googleIcon"/>
-            <div id="googleText">
+            <span id="googleText">
               Login with Google
-            </div>
+            </span>
           </button>
         </a>
       </div>

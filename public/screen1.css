@@ -18,14 +18,21 @@ body {
   height: 100vh;
 }
 
+img {
+  width: 100%;
+}
+
 #login {
   display: flex;
   flex-direction: column;
   background: #365c85;
   width: 50%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.centered {
+#lafLogo {
   
 }
 
