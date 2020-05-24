@@ -1,4 +1,4 @@
-/* this file is loaded by index.html and styles the page */
+/* this file is loaded by screen1.html and styles the page */
 
 * {
   box-sizing: border-box;
@@ -22,7 +22,7 @@ h1 {
 
 main {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
