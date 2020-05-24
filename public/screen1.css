@@ -36,37 +36,39 @@ html,body {
 }
 
 #lafLogo {
-  margin: 0 0 7vh 0;
-  width: 70%;
+  margin: 7vh 0 7vh 0;
+  width: 60%;
 }
 
 
 a {
   text-decoration: none;
+  padding: 5px;
 }
 
 #loginStartButton {
   background: white;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 7px;
   border: 0;
   margin: 10px;
-  padding: 0;
+  padding: 0 0 0 0;
   width: 100%;
-  height: 55px;
-}
-
-#googleIcon {
-/*   margin: 5px; */
   height: 45px;
 }
 
+#googleIcon {
+  margin: 5px 0 10px 0;
+  height: 30px;
+/*   width: 30px; */
+}
+
 #googleText{
-  margin: 20px;
+  margin: 13px 20px 20px 20px;
 /*   height: 8vh; */
   font-family: 'Montserrat', sans-serif;
   font-size: medium;
