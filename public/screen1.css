@@ -13,6 +13,7 @@ html,body {
   min-height: 100vh;
 }
 
+
 .libImg {
   width: 50%;
   height: 100vh;
@@ -29,7 +30,7 @@ html,body {
 }
 
 #lafLogo {
-  
+  margin: 0 0 5vh 0;
 }
 
 a {
@@ -52,11 +53,13 @@ a {
 }
 
 #googleIcon {
-  margin: 5px;
-  width: 9vh;
+/*   margin: 5px; */
+  height: 8vh;
 }
 
 #googleText{
 /*   margin: 20px; */
+  font-family: 'Montserrat', sans-serif;
   font-size: large;
+  color: #142a50;
 }
