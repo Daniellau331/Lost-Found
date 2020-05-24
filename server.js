@@ -80,7 +80,7 @@ app.get('/*',express.static('public'));
 
 // special case for base URL, goes to index.html
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/public/screen1.html');
 });
 
 // Glitch assests directory 
