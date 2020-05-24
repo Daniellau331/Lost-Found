@@ -16,6 +16,11 @@ html,body {
 .libImg {
   width: 50%;
   height: 100%;
+/*   justify-content: center; */
+}
+
+.imageWrapper{
+  height:100%;
 }
 
 #login {
@@ -29,8 +34,8 @@ html,body {
 }
 
 #lafLogo {
-  margin: 0 0 5vh 0;
-  width: 80%;
+  margin: 0 0 7vh 0;
+  width: 70%;
 }
 
 
@@ -50,12 +55,12 @@ a {
   margin: 10px;
   padding: 0;
   width: 100%;
-  height: 50px;
+  height: 55px;
 }
 
 #googleIcon {
 /*   margin: 5px; */
-  height: 30px;
+  height: 45px;
 }
 
 #googleText{
@@ -64,4 +69,21 @@ a {
   font-family: 'Montserrat', sans-serif;
   font-size: medium;
   color: #142a50;
+}
+
+@media screen and (max-width: 625px) {
+  
+  html,body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .libImg{
+    width: 100%;
+    height: 50%;
+  }
+  
+  .imageWrapper{
+    width: 100%;
+  }
 }
