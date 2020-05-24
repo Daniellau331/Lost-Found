@@ -14,6 +14,7 @@ html,body {
 }
 
 
+
 .libImg {
   width: 50%;
   height: 100vh;
@@ -31,7 +32,9 @@ html,body {
 
 #lafLogo {
   margin: 0 0 5vh 0;
+  
 }
+
 
 a {
   text-decoration: none;
