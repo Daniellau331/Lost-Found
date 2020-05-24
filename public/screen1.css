@@ -6,19 +6,8 @@
 
 body {
   font-family: sans-serif;
-  margin: 2em 1em;
-  line-height: 1.5em;
-  --main-color: #99cc66;
-  --dark-color: #669944;
-  --light-color: #aaee88;
 }
 
-
-h1 {
-  color: var(--dark-color);
-  max-width: 90;
-  text-align: center;
-}
 
 main {
   display: flex;
@@ -26,16 +15,19 @@ main {
   align-items: center;
 }
 
-
-button {
-  background-color: var(--main-color);
-  font-size: large;
-  padding: 10px;
+#libImg {
+  
 }
 
+#login {
+  display: flex;
+  flex-direction: column;
+}
 
-footer {
-  margin-top: 3em;
-  padding-top: 1.5em;
-  border-top: 1px solid lightgrey;
+.centered {
+  
+}
+
+#loginStartButton {
+  
 }
