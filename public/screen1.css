@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+html,body {
   padding: 0;
   margin: 0;
   display: flex;
@@ -16,10 +16,6 @@ body {
 .libImg {
   width: 50%;
   height: 100vh;
-}
-
-img {
-  width: 100%;
 }
 
 #login {
@@ -40,9 +36,13 @@ img {
   background: white;
   display: flex;
   flex-direction: row;
-  font-size: auto;
+  border-radius: 5px;
+  margin: 0;
+  padding: 5px;
+  
 }
 
 #googleIcon {
+  margin: 5px;
   width: 30px;
 }
