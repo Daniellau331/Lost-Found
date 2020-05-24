@@ -19,16 +19,16 @@ html,body {
   width: 50%;
   height: 100%;
   min-height: 400px;
-/*   display: flex;
-  justify-content: center; */
-/*   object-fit:none; */
-  object-position: center;
+  display: flex;
+  justify-content: center;
+/*   background-position */
   
 }
 
 .imageWrapper{
   height:100%;
 /*   transform: translate(-20%,0); */
+  object-fit:fill;
 }
 
 #login {
@@ -92,16 +92,17 @@ a {
   
   .libImg{
     width: 100%;
-    min-height: 10vh;
+    min-height: 0px;
     min-width: 625px;
     height: 50%;
+    overflow:hidden;
 /*     display: block; */
   }
   
   .imageWrapper{
     width: 100%;
     height: 100%;
-    
+/*     min-width: 625px; */
   }
   
   #login {
