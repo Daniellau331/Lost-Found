@@ -19,16 +19,16 @@ html,body {
   width: 50%;
   height: 100%;
   min-height: 400px;
-  display: flex;
-  justify-content: center;
-/*   background-position */
-  
+/*   display: flex;
+  justify-content: center; */
+  background-image: url(../assets/Shields-entrance_Credit-Hector-Villicana_1924x1282-960x600-c-center.jpg);
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size: cover;
 }
 
 .imageWrapper{
   height:100%;
-/*   transform: translate(-20%,0); */
-  object-fit:fill;
 }
 
 #login {
@@ -93,17 +93,12 @@ a {
   .libImg{
     width: 100%;
     min-height: 0px;
-    min-width: 625px;
+/*     min-width: 625px; */
     height: 50%;
-    overflow:hidden;
+/*     overflow:hidden; */
 /*     display: block; */
   }
   
-  .imageWrapper{
-    width: 100%;
-    height: 100%;
-/*     min-width: 625px; */
-  }
   
   #login {
     width: 100%;
