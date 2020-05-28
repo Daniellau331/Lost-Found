@@ -140,7 +140,7 @@ app.get('/setcookie', requireUser,
   
       // set a public cookie; the session cookie was already set by Passport
       res.cookie('google-passport-example', new Date());
-      res.redirect('/user/hello.html');
+      res.redirect('/user/screen2.html');
     //} else {
     //   res.redirect('/');
     //}
