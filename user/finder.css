@@ -1,0 +1,144 @@
+/* this file is loaded by index.html and styles the page */
+
+* {
+  box-sizing: border-box;
+}
+
+.lightyellow {
+  background: #feebb1;
+}
+
+header {
+  margin: 1.5em;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#lafLogo {
+  height: 10vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.frame {
+  margin: 0.5em 2em 0.5em 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  color: #142a50;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: larger;
+  margin: 15px;
+}
+
+h3 {
+  color: #142a50;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  margin: 8px;
+  font-size: small;
+}
+
+/* .btn {
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  width: 35vh;
+  height: 8vh;
+  border: 0;
+  border-radius: 10px;
+  margin: 15px;
+} */
+
+.searchBox {
+  background: white;
+/*   padding: 20px 40px; */
+  margin: 0 15px;
+}
+
+
+form {
+  margin: 20px 30px;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  diplay: block;
+}
+
+
+
+label {
+  color: #142a50;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  margin: 8px;
+  font-size: small;
+  display: block;
+}
+
+
+input[type=text], textarea{
+  width: 100%;
+  padding: 8px;
+  border: 0;
+  box-sizing: border-box;
+  margin: 6px 8px 16px 8px;
+  background: #e5e5e5;
+}
+
+textarea {
+  resize: none;
+}
+
+input[type=file] {
+  width: 100%;
+  margin: 6px 8px 16px 8px;
+}
+
+.finder {
+  background: #daab27;
+}
+
+.endDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.smallBtn {
+  border: 0;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+  font-weight: bold;
+  color: white;
+  padding: 0.5em 1em;
+/*   margin: 0 20px; */
+}
+
+
+input[type=date], input[type=time] {
+  padding: 8px;
+  border: 0;
+  box-sizing: border-box;
+  margin: 6px 8px 16px 8px;
+  background: #e5e5e5;
+}
+
+#searchLogo {
+  height: 3vh;
+  margin: 5px;
+  transform: scaleX(-1);
+}

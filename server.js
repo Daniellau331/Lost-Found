@@ -80,7 +80,7 @@ app.get('/*',express.static('public'));
 
 // special case for base URL, goes to index.html
 app.get('/', function(req, res) {
-  res.sendFile(__dirname + '/public/screen1.html');
+  res.sendFile(__dirname + '/public/login.html');
 });
 
 // Glitch assests directory 
@@ -140,7 +140,7 @@ app.get('/setcookie', requireUser,
   
       // set a public cookie; the session cookie was already set by Passport
       res.cookie('google-passport-example', new Date());
-      res.redirect('/user/screen2.html');
+      res.redirect('/user/home.html');
     //} else {
     //   res.redirect('/');
     //}
