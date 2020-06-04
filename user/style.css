@@ -8,6 +8,10 @@
   background: #feebb1;
 }
 
+.lightblue {
+  background: #b3c1d1;
+}
+
 header {
   margin: 1.5em;
   display: flex;
@@ -101,6 +105,10 @@ input[type=file] {
 
 .finder {
   background: #daab27;
+}
+
+.seeker{
+  background: #142a50;
 }
 
 .endDiv {
