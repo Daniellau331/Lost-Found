@@ -56,6 +56,9 @@ h3 {
 
 form {
   margin: 20px 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: small;
 }
 
 .hidden {
@@ -126,7 +129,7 @@ input[type=date], input[type=time] {
   background: #e5e5e5;
 }
 
-#searchLogo {
+.searchLogo {
   height: 3vh;
   margin: 5px;
   transform: scaleX(-1);

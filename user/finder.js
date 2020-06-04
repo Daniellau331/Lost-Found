@@ -5,3 +5,10 @@ document.getElementById("nextBtn").addEventListener("click", function(){
   secondSearch.className = "show";
   return false;
 });
+
+document.getElementById("searchBar").addEventListener("click", function(){
+  let input = document.getElementById("input");
+  let search = document.getElementById("search");
+  input.className = "hidden";
+  search.className = "show";
+});

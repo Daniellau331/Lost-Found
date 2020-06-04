@@ -20,62 +20,108 @@
     </header>
     
     <main>
-      <div class="frame">
-        <h2>Input the found item</h2>
-        <div class="searchBox">
-          <form>
-            <div class="show" id="firstSearch">
-              <label for="title">Title</label>
-              <input type="text" id="title" name="title">
+      
+      <div class="show" id="input">
+        
+        <div class="frame">
+          <h2>Input the found item</h2>
+          <div class="searchBox">
+            <form>
+              <div class="show" id="firstSearch">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title">
 
-              <label for="category">Category</label>
-              <input type="text" id="category" name="category">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category">
 
-              <label for="description">Description</label>
-              <textarea type="text" id="description" name="description" rows="10"></textarea>
-              
-              <label for="attachment">Attach a photo (optional)</label>
-              <input type="file" id="file" name="file">
-              
-              <div class="endDiv">
-                <button type="button" id="nextBtn" class="finder smallBtn">
-                  Next
-                </button>
+                <label for="description">Description</label>
+                <textarea type="text" id="description" name="description" rows="10"></textarea>
+
+                <label for="attachment">Attach a photo (optional)</label>
+                <input type="file" id="file" name="file">
+
+                <div class="endDiv">
+                  <button type="button" id="nextBtn" class="finder smallBtn">
+                    Next
+                  </button>
+                </div>
+
               </div>
-              
+
+              <div class="hidden" id="secondSearch">
+
+                <label for="date">Data & Time</label>
+                <input type="date" id="date" name="date" value="2020-01-01">
+                <input type="time" id="time" name="time" value="00:00">
+
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location">
+
+                <div>
+                  MAP HERE！！！！！！！！！！！！！！！！！！
+                </div>
+
+                <div class="endDiv">
+                  <input type="submit" value="Submit" class="finder smallBtn">
+                </div>
+
+              </div>
+            </form>
+          </div>  
+        </div>
+
+        <div class="frame">
+          <h2>Or search for existing requests</h2>
+          <div class="searchBox"  id="searchBar">
+            <div class="endDiv">
+              <img src="https://cdn.glitch.com/fd1029cd-0359-4ff7-929f-ee105bbd2da0%2Fsearch-solid.svg?v=1590327787464" class="searchLogo"/>
             </div>
-            
-            <div class="hidden" id="secondSearch">
+          </div>
+        </div>
+        
+      </div>
+      
+      <div class="hidden" id="search">
+        <div class="frame">
+          <h2>
+            Search for existing requests
+          </h2>
+          <div class="searchBox">
+            <div class="endDiv">
+              <img src="https://cdn.glitch.com/fd1029cd-0359-4ff7-929f-ee105bbd2da0%2Fsearch-solid.svg?v=1590327787464" class="searchLogo"/>
+            </div>
+          </div>
+        </div>
+        
+        <div class="frame">
+          <div class="searchBox">
+            <form>
+              <label for="date1">Data & Time</label>
+              <input type="date" id="date1" name="date1" value="2020-01-01">
+              <input type="time" id="time1" name="time1" value="00:00">
+              to
+              <input type="date" id="date2" name="date2" value="2020-01-01">
+              <input type="time" id="time2" name="time2" value="00:00">
               
-              <label for="date">Data & Time</label>
-              <input type="date" id="date" name="date" value="2020-01-01">
-              <input type="time" id="time" name="time" value="00:00">
+              <label for="category1">Category</label>
+              <input type="text" id="category1" name="category1">
               
-              <label for="location">Location</label>
-              <input type="text" id="location" name="location">
-              
+              <label for="location1">Location</label>
+              <input type="text" id="location1" name="location1">
+
               <div>
                 MAP HERE！！！！！！！！！！！！！！！！！！
               </div>
               
               <div class="endDiv">
-                <input type="submit" value="Submit" class="finder smallBtn">
+                <input type="submit" value="Search" class="finder smallBtn">
               </div>
               
-            </div>
-          </form>
-        </div>  
-      </div>
-      
-      <div class="frame">
-        <h2>Or search for existing requests</h2>
-        <div class="searchBox">
-          <div class="endDiv">
-            <img src="https://cdn.glitch.com/fd1029cd-0359-4ff7-929f-ee105bbd2da0%2Fsearch-solid.svg?v=1590327787464" id="searchLogo"/>
+            </form>
+            
           </div>
         </div>
       </div>
-      
     </main>
     <script src="/user/finder.js"></script>
   </body>
