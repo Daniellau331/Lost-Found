@@ -4,7 +4,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const assets = require('./assets');
-const sqlite3 = require('sqlite3');  // we'll need this later
+const sqlite3 = require('sqlite3').verbose();  // we'll need this later
+const multer = require('multer');
+const fs = require('fs');
+const FormData = require("form-data");
 
 // and some new ones related to doing the login process
 const passport = require('passport');
@@ -241,4 +244,28 @@ function requireLogin (req, res, next) {
     next();
   }
 };
+
+
+// DB
+// CREATE DB
+const db = new sqlite3.Database("data.db", (err) => {
+  if(err) {
+    console.log(err.message);
+  } else {
+    console.log("DB connected");
+  }
+});
+
+function create_table(){
+  let cmd = "CREATE TABLE PostcardTable (id INTEGER PRIMARY KEY, name TEXT,image TEXT, color TEXT, font TEXT, message TEXT)";
+  db.run(cmd, function (err) {
+    if(err) {
+      console.log(err.message);
+    } else {
+      console.log("Table created");
+    }
+  });
+}
+
+
 
