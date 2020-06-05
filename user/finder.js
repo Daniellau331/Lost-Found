@@ -27,3 +27,6 @@ function initMap()
   marker = new google.maps.Marker();
   marker.setMap(null);
 }
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);
