@@ -269,9 +269,7 @@ function create_table(){
 }
 
 
-
-//Google Map Api
-
+// Google map api
 // USE REVERSE GEOCODING TO GET ADDRESS
 // SEE https://developers.google.com/maps/documentation/geocoding/intro#reverse-example
 app.get("/getAddress", (req, res) => {
