@@ -8,6 +8,7 @@ const sqlite3 = require('sqlite3').verbose();  // we'll need this later
 const multer = require('multer');
 const fs = require('fs');
 const FormData = require("form-data");
+const request = require("request");
 
 // and some new ones related to doing the login process
 const passport = require('passport');
@@ -266,6 +267,34 @@ function create_table(){
     }
   });
 }
+
+
+
+//Google Map Api
+
+// USE REVERSE GEOCODING TO GET ADDRESS
+// SEE https://developers.google.com/maps/documentation/geocoding/intro#reverse-example
+app.get("/getAddress", (req, res) => {
+  let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + req.query.lat + ", " + req.query.lng + "&key="
+  + process.env.API_KEY;
+  request(url, { json: true }, (error, response, body) => {
+    if (error) { return console.log(error); }
+    res.json(body);
+  });
+})
+
+// USE KEYWORDS TO FIND ADDRESS
+// SEE https://developers.google.com/places/web-service/search#find-place-examples
+app.get("/searchAddress", (req, res) => {
+  // LOCATION BIAS
+  var url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + req.query.input
+  + "&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&locationbias=circle:100000@38.5367859,-121.7553711&key="
+  + process.env.API_KEY;
+  request(url, { json: true }, (error, response, body) => {
+    if (error) { return console.log(error); }
+    res.json(body);
+  });
+})
 
 
 
