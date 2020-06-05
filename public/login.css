@@ -68,13 +68,13 @@ a {
 }
 
 #googleIcon {
-  margin: 5px 0 10px 0;
+  margin: 10px 0 10px 0;
   height: 30px;
 /*   width: 30px; */
 }
 
 #googleText{
-  margin: 13px 20px 20px 20px;
+  margin: 17px 20px 20px 20px;
 /*   height: 8vh; */
   font-family: 'Montserrat', sans-serif;
   font-size: medium;
