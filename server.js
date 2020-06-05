@@ -257,7 +257,7 @@ const db = new sqlite3.Database("data.db", (err) => {
 });
 
 function create_table(){
-  let cmd = "CREATE TABLE PostcardTable (id INTEGER PRIMARY KEY, name TEXT,image TEXT, color TEXT, font TEXT, message TEXT)";
+  let cmd = "CREATE TABLE dataTable (id INTEGER PRIMARY KEY, name TEXT,image TEXT, color TEXT, font TEXT, message TEXT)";
   db.run(cmd, function (err) {
     if(err) {
       console.log(err.message);
