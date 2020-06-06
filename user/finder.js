@@ -29,6 +29,12 @@ function initMap() {
   
   marker.addListener("dragend", function() {
     map.setCenter(marker.getPosition());
+    let url = "/getAddress?lag=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
+    fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data)
+    })
   });
 }
 
