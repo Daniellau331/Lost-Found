@@ -49,7 +49,9 @@ function search(){
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      document.getElementById('location').value = data.results[0].formatted_address;
+      document.getElementById('location').value = data.candidates[0].formatted_address;
+      marker.setPosition(data.candidates[0].geometry.location);
+      map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
     })
 }
 
