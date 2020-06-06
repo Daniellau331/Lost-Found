@@ -284,6 +284,7 @@ db.get(cmd, function(err, val) {
 app.get("/getAddress", (req, res) => {
   let url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + req.query.lat + ", " + req.query.lng + "&key="
   + process.env.API_KEY;
+  console.log(url);
   request(url, { json: true }, (error, response, body) => {
     if (error) { return console.log(error); }
     res.json(body);

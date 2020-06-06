@@ -32,6 +32,7 @@ function initMap() {
     let url = "/getAddress?lag=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
     console.log(marker.getPosition().lat());
     console.log(marker.getPosition().lng());
+    console.log(url);
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
