@@ -30,13 +30,16 @@ function initMap() {
   marker.addListener("dragend", function() {
     map.setCenter(marker.getPosition());
     let url = "/getAddress?lag=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
+    console.log(marker.getPosition().lat());
+    console.log(marker.getPosition().lng());
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
-      console.log(data)
+      console.log(data);
+      // document.getElementById('location').value = data.result[0].formatted_address;
     })
   });
-}
+};
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
