@@ -44,7 +44,7 @@ function initMap() {
 
 
 function search(){
-  let url = "/searchAddress?input=" + document.getElementById('location').value;
+  let url = "/searchAddress?input=" + document.getElementById('location').value + ",Davis";
   fetch(url)
     .then(res=>res.json())
     .then(data=>{
