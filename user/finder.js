@@ -29,7 +29,7 @@ function initMap() {
   
   marker.addListener("dragend", function() {
     map.setCenter(marker.getPosition());
-    let url = "/getAddress?lag=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
+    let url = "/getAddress?lat=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
     console.log(marker.getPosition().lat());
     console.log(marker.getPosition().lng());
     console.log(url);
@@ -37,7 +37,7 @@ function initMap() {
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      // document.getElementById('location').value = data.result[0].formatted_address;
+      document.getElementById('location').value = data.results[0].formatted_address;
     })
   });
 };
