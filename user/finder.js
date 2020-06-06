@@ -30,9 +30,9 @@ function initMap() {
   marker.addListener("dragend", function() {
     map.setCenter(marker.getPosition());
     let url = "/getAddress?lat=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
-    console.log(marker.getPosition().lat());
-    console.log(marker.getPosition().lng());
-    console.log(url);
+    // console.log(marker.getPosition().lat());
+    // console.log(marker.getPosition().lng());
+    // console.log(url);
     fetch(url)
     .then(res=>res.json())
     .then(data=>{
@@ -44,7 +44,13 @@ function initMap() {
 
 
 function search(){
-  
+  let url = "/searchAddress?input=" + document.getElementById('location').value;
+  fetch(url)
+    .then(res=>res.json())
+    .then(data=>{
+      console.log(data);
+      // document.getElementById('location').value = data.results[0].formatted_address;
+    })
 }
 
 // Append the 'script' element to 'head'
