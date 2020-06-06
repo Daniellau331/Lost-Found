@@ -279,6 +279,18 @@ db.get(cmd, function(err, val) {
 });
 
 
+let storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, __dirname+'/images')    
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
+let upload = multer({storage: storage});
+
+
 // Google map api
 // USE REVERSE GEOCODING TO GET ADDRESS
 // SEE https://developers.google.com/maps/documentation/geocoding/intro#reverse-example
