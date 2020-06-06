@@ -1,5 +1,5 @@
 // GLOBAL VARs
-var coords, map, marker, infowindow;
+var coords, map, marker;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
