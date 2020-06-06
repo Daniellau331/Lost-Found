@@ -258,7 +258,7 @@ const db = new sqlite3.Database("data.db", (err) => {
 });
 
 function create_table(){
-  let cmd = "CREATE TABLE dataTable (id INTEGER PRIMARY KEY, name TEXT,image TEXT, color TEXT, font TEXT, message TEXT)";
+  let cmd = "CREATE TABLE dataTable (id INTEGER PRIMARY KEY, type TEXT, title TEXT, category TEXT, description TEXT, img TEXT, date TEXT, time TEXT, location TEXT)";
   db.run(cmd, function (err) {
     if(err) {
       console.log(err.message);
@@ -267,6 +267,15 @@ function create_table(){
     }
   });
 }
+
+let cmd = "SELECT name FROM sqlite_master WHERE type='table' AND name='dataTable'";
+db.get(cmd, function(err, val) {
+  if(val == undefined) {
+    create_table();
+  } else {
+    console.log("Found table dataTable");
+  }
+});
 
 
 // Google map api
