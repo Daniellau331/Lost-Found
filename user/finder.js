@@ -49,9 +49,14 @@ function search(){
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      // document.getElementById('location').value = data.results[0].formatted_address;
+      document.getElementById('location').value = data.results[0].formatted_address;
     })
 }
+
+
+const search_bar = document.getElementById('location');
+
+search_bar.addEventListener('change',search);
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
