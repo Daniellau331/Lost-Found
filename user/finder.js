@@ -59,13 +59,35 @@ function initMap() {
       });
   });
   
+  myMarker2.addListener("dragend", function() {
+    map.setCenter(myMarker.getPosition());
+    let url =
+      "/getAddress?lat=" +
+      myMarker.getPosition().lat() +
+      "&lng=" +
+      myMarker.getPosition().lng();
+    // console.log(marker.getPosition().lat());
+    // console.log(marker.getPosition().lng());
+    // console.log(url);
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        document.getElementById("location1").value =
+          data.results[0].formatted_address;
+      });
+  });
+  
   
 }
 
-function search() {
+const search_bar1 = document.getElementById("location");
+search_bar1.addEventListener("change", search1);
+
+function search1() {
   let url =
     "/searchAddress?input=" +
-    document.getElementsByClassName("location").value +
+    document.getElementById("location").value +
     ",Davis";
   fetch(url)
     .then(res => res.json())
@@ -73,14 +95,29 @@ function search() {
       console.log(data);
       document.getElementById("location").value =
         data.candidates[0].formatted_address;
-      marker.setPosition(data.candidates[0].geometry.location);
-      map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
+      myMarker.setPosition(data.candidates[0].geometry.location);
+      map.setCenter(myMarker.getPosition(data.candidates[0].geometry.location));
     });
 }
 
-const search_bar1 = document.getElementById("location");
+const search_bar2 = document.getElementById("location1");
+search_bar2.addEventListener("change", search2);
 
-search_bar1.addEventListener("change", search);
+function search2() {
+  let url =
+    "/searchAddress?input=" +
+    document.getElementById("location1").value +
+    ",Davis";
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      document.getElementById("location1").value =
+        data.candidates[0].formatted_address;
+      myMarker2.setPosition(data.candidates[0].geometry.location);
+      map2.setCenter(myMarker2.getPosition(data.candidates[0].geometry.location));
+    });
+}
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
