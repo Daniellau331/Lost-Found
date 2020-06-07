@@ -310,8 +310,29 @@ app.post('/seekerInsert', function (req, res, next) {
 });
 
 // db.run("DROP TABLE userTable");
-app.get('/')
+app.get('/finderGet', function (req, res, next){
+  console.log("POST: finderGet");
+  console.log(req.body);
+  let date1 = req.query.date1;
+  let date2 = req.query.date2;
+  let time1 = req.query.time1;
+  let time2 = req.query.time2;
+  let cmd = "SELECT * FROM userTable WHERE type='finder' AND date BETWEEN";
+  db.all(cmd, function(err, rows){
+    if(err){console.log(err.message); next();}
+    else {res.json(rows); console.log(rows);}
+  });
+});
 
+app.get('/seekerGet', function (req, res, next){
+  console.log("POST: seekerGet");
+  console.log(req.body);
+  let cmd = "SELECT * FROM userTable WHERE type='seeker'";
+  db.all(cmd, function(err, rows){
+    if(err){console.log(err.message); next();}
+    else {res.json(rows); console.log(rows);}
+  });
+});
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
