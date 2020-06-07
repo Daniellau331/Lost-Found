@@ -63,3 +63,8 @@ function sendGetRequest(selectedFile) {
 
 
 
+//Building auto-complete starts
+
+
+
+//Building auto-complete ends
