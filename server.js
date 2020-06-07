@@ -313,11 +313,11 @@ app.post('/upload', upload.single('newImage'), function (request, response) {
     filename = '/images/'+request.file.originalname;
     console.log("newfile name:"+filename);
     response.end("recieved "+request.file.originalname);
-    sendMediaStore(filename, request, response);
-    fs.unlink(filename.replace("/images/","images/"), (err) => {
-    if(err){console.log("ERROR DELETE:"+ err.message);}
-    else {console.log("DELETE SUCCESS");}
-  });
+    // sendMediaStore(filename, request, response);
+    // fs.unlink(filename.replace("/images/","images/"), (err) => {
+    // if(err){console.log("ERROR DELETE:"+ err.message);}
+    // else {console.log("DELETE SUCCESS");}
+    // });
   }
   else throw 'error';
 });

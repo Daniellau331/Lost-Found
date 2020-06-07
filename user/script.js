@@ -26,7 +26,7 @@ document.getElementById("attachment").addEventListener("change", function(){
   xhr.onloadend = function(e) {
     console.log("POST: upload");
     console.log(xhr.responseText);
-    // sendGetRequest(selectedFile);
+    sendGetRequest(selectedFile);
   }
   
   // actually send the request
