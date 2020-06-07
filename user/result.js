@@ -26,6 +26,14 @@ window.onload = function () {
 
 }
 
-function loadData() {
+function loadFinder() {
+  
+}
+
+function loadSeeker() {
+  
+}
+
+function loadAll() {
   
 }
