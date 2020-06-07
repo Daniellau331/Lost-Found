@@ -127,12 +127,12 @@ document.head.appendChild(script);
 
 
 function searching() {
-  let date1 = document.getElementById("date1");
-  let date2 = document.getElementById("date2");
-  let time1 = document.getElementById("time1");
-  let time2 = document.getElementById("time2");
-  let category1 = document.getElementById("category1");
-  let location1 = document.getElementById("location1");
+  let date1 = document.getElementById("date1").value;
+  let date2 = document.getElementById("date2").value;
+  let time1 = document.getElementById("time1").value;
+  let time2 = document.getElementById("time2").value;
+  let category1 = document.getElementById("category1").value;
+  let location1 = document.getElementById("location1").value;
   let url = "result.html?date1="+ date1 +"&date2=" + date2 +"&time1=" + time1 +"&time2=" + time2 +"&category1=" + category1 +"&location1=" + location1;
   window.location.href = encodeURI(url);
 }

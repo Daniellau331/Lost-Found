@@ -6,5 +6,6 @@ window.onload = function () {
          tmp = params[i].split('=');
          data[tmp[0]] = tmp[1];
     }
-    document.getElementById('searchResult').innerHTML = decodeURIComponent(data.location1);
+    console.log(data);
+    document.getElementById('searchResult').innerHTML = data.location1;
 }
