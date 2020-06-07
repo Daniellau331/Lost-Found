@@ -132,6 +132,7 @@ function searching() {
   let time1 = document.getElementById("time1");
   let time2 = document.getElementById("time2");
   let category1 = document.getElementById("category1");
-  let location1
-  
+  let location1 = document.getElementById("location1");
+  let url = "result.html?date1="+ encodeURIComponent(date1) +"&date2=" + encodeURIComponent(date2) +"&time1=" + encodeURIComponent(time1) +"&time2=" + encodeURIComponent(time2) +"&category1=" + encodeURIComponent(category1) +"&location1=" + encodeURIComponent(location1);
+  window.location.href = url;
 }
