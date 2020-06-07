@@ -8,9 +8,19 @@ window.onload = function () {
   }
   console.log(data);
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let month1 = data.date1.split('-')[1];
-  let month2 = data.date2.split('-')[1];
-  let day1 = data.date1.split('-')[1];
-  let day2 = data.date2.split('-')[1];
-  document.getElementById('searchResult').innerHTML = data.date1 + "-" + data.date2 + "," + data.category1 + "," + data.location1;
+  const nth = function(d) {
+    if (d > 3 && d < 21) return 'th';
+    switch (d % 10) {
+      case 1:  return "st";
+      case 2:  return "nd";
+      case 3:  return "rd";
+      default: return "th";
+    }
+  }
+  let month1 = Number(data.date1.split('-')[1]);
+  let month2 = Number(data.date2.split('-')[1]);
+  let day1 = Number(data.date1.split('-')[2]);
+  let day2 = Number(data.date2.split('-')[2]);
+  document.getElementById('searchResult').innerHTML = monthNames[month1] + " " + day1 + nth(day1) + " - " + monthNames[month2] + " " + day2 + nth(day2) + ", " + data.category1 + ", " + data.location1;
 }
+

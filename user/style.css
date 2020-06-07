@@ -85,7 +85,7 @@ label {
 }
 
 
-input[type=text], textarea{
+input[type=text],input[type=list], textarea{
   width: 100%;
   padding: 8px;
   border: 0;
