@@ -376,8 +376,8 @@ app.get('/allGet', function (req, res, next){
   let date2 = req.query.date2;
   let time1 = req.query.time1;
   let time2 = req.query.time2;
-  let combine1 = date1 + " " + time1;
-  let combine2 = date2 + " " + time2;
+  let combine1 = "'"+date1 + " " + time1+"'";
+  let combine2 = "'"+date2 + " " + time2+"'";
   console.log("combine1:" + combine1);
   console.log("combine2:" + combine2);
   let category = req.query.category;
