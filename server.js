@@ -278,6 +278,14 @@ db.get(cmd, function(err, val) {
   }
 });
 
+app.get('/checkdb', function (req, res, next){
+  let cmd = "SELECT * FROM dataTable";
+  db.all(cmd, function(err, rows){
+    if(err){next();}
+    else {res.json(rows); console.log(rows);}
+  });
+});
+
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
