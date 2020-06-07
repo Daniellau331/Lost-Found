@@ -259,7 +259,7 @@ const db = new sqlite3.Database("data.db", (err) => {
 });
 
 function create_table(){
-  let cmd = "CREATE TABLE dataTable (id INTEGER PRIMARY KEY, type TEXT, title TEXT, category TEXT, description TEXT, img TEXT, date TEXT, time TEXT, location TEXT)";
+  let cmd = "CREATE TABLE userTable (id INTEGER PRIMARY KEY, type TEXT, title TEXT, category TEXT, description TEXT, img TEXT, date TEXT, time TEXT, location TEXT)";
   db.run(cmd, function (err) {
     if(err) {
       console.log(err.message);
@@ -269,17 +269,17 @@ function create_table(){
   });
 }
 
-let cmd = "SELECT name FROM sqlite_master WHERE type='table' AND name='dataTable'";
+let cmd = "SELECT name FROM sqlite_master WHERE type='table' AND name='userTable'";
 db.get(cmd, function(err, val) {
   if(val == undefined) {
     create_table();
   } else {
-    console.log("Found table dataTable");
+    console.log("Found table userTable");
   }
 });
 
 app.get('/checkdb', function (req, res, next){
-  let cmd = "SELECT * FROM dataTable";
+  let cmd = "SELECT * FROM userTable";
   db.all(cmd, function(err, rows){
     if(err){next();}
     else {res.json(rows); console.log(rows);}
@@ -290,13 +290,26 @@ app.get('/checkdb', function (req, res, next){
 app.post('/finderInsert', function (req, res, next) {
   console.log("POST: finderInsert");
   console.log(req.body);
-  let cmd = "INSERT INTO dataTable (type, title, category, description, img, date, time, location) VALUES (?,?,?,?,?,?,?,?)";
-  db.run(cmd, "finder", req.body.title, req.body.category, req.body.description, req.body.attachment, req.body.date, req.body.time, req.body.location, function(err){
+  let cmd = "INSERT INTO userTable (type, title, category, description, img, date, time, location) VALUES (?,?,?,?,?,?,?,?)";
+  db.run(cmd, "finder", req.body.title, req.body.category, req.body.description, "http://ecs162.org:3000/images/zroyu/"+req.body.attachment, req.body.date, req.body.time, req.body.location, function(err){
     if(err) {console.log(err.message);next();}
     else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
   });
   
 });
+
+app.post('/seekerInsert', function (req, res, next) {
+  console.log("POST: finderInsert");
+  console.log(req.body);
+  let cmd = "INSERT INTO userTable (type, title, category, description, img, date, time, location) VALUES (?,?,?,?,?,?,?,?)";
+  db.run(cmd, "seeker", req.body.title, req.body.category, req.body.description, "http://ecs162.org:3000/images/zroyu/"+req.body.attachment, req.body.date, req.body.time, req.body.location, function(err){
+    if(err) {console.log(err.message);next();}
+    else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
+  });
+  
+});
+
+db.run("DROP TABLE userTable")
 
 
 let storage = multer.diskStorage({
