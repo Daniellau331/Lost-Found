@@ -315,13 +315,22 @@ app.get('/finderGet', function (req, res, next){
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
+  let category = req.query.category;
   // let time1 = req.query.time1;
   // let time2 = req.query.time2;
-  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='finder'";
-  db.all(cmd, function(err, rows){
-    if(err){console.log(err.message); next();}
-    else {res.json(rows); console.log(rows);}
-  });
+  if(category == ''){
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='finder'";
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }else {
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='finder' AND category="+category;
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }
 });
 
 app.get('/seekerGet', function (req, res, next){
@@ -329,11 +338,21 @@ app.get('/seekerGet', function (req, res, next){
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
-  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='seeker'";
-  db.all(cmd, function(err, rows){
-    if(err){console.log(err.message); next();}
-    else {res.json(rows); console.log(rows);}
-  });
+  let category = req.query.category;
+  if(category == ''){
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='seeker'";
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }else {
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='seeker' AND category="+category;
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }
+  
 });
 
 
@@ -342,11 +361,20 @@ app.get('/allGet', function (req, res, next){
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
-  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2;
-  db.all(cmd, function(err, rows){
-    if(err){console.log(err.message); next();}
-    else {res.json(rows); console.log(rows);}
-  });
+  let category = req.query.category;
+  if(category == ''){
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2;
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }else {
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND category="+category;
+    db.all(cmd, function(err, rows){
+      if(err){console.log(err.message); next();}
+      else {res.json(rows); console.log(rows);}
+    });
+  }
 });
 
 let storage = multer.diskStorage({

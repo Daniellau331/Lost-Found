@@ -36,7 +36,7 @@ window.onload = function () {
 
 function loadFinder(data) {
   let xhr = new XMLHttpRequest();
-  
+  let link_query = "?date1="+data.date1 + " "+data.time1
 }
 
 function loadSeeker(data) {
