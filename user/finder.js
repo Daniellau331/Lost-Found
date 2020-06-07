@@ -19,8 +19,8 @@ function initMap() {
   };
 
   // INIT MAP
-  map = new google.maps.Map(document.getElementsByClassName("Google_map"), mapProp);
-
+  map = new google.maps.Map(document.getElementsByClassName("googleMap"), mapProp);
+  console.log(document.getElementsByClassName("googleMap"));
   marker = new google.maps.Marker();
   marker.setDraggable(true);
   marker.setPosition(map.center);
@@ -37,19 +37,19 @@ function initMap() {
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      document.getElementById('location').value = data.results[0].formatted_address;
+      document.getElementsByClassName('location').value = data.results[0].formatted_address;
     })
   });
 };
 
 
 function search(){
-  let url = "/searchAddress?input=" + document.getElementById('location').value + ",Davis";
+  let url = "/searchAddress?input=" + document.getElementsByClassName('location').value + ",Davis";
   fetch(url)
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      document.getElementById('location').value = data.candidates[0].formatted_address;
+      document.getElementsByClassName('location').value = data.candidates[0].formatted_address;
       marker.setPosition(data.candidates[0].geometry.location);
       map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
     })
