@@ -310,7 +310,7 @@ app.post('/seekerInsert', function (req, res, next) {
 });
 
 // db.run("DROP TABLE userTable");
-app.get('/finderGet', function (req, res, next){
+app.get('finderGet', function (req, res, next){
   console.log("GET: finderGet");
   console.log(req.body);
   let date1 = req.query.date1;
