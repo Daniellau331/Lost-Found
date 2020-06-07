@@ -23,17 +23,26 @@ window.onload = function () {
   let day2 = Number(data.date2.split('-')[2]);
   document.getElementById('searchResult').innerHTML = monthNames[month1] + " " + day1 + nth(day1) + " - " + monthNames[month2] + " " + day2 + nth(day2) + ", " + data.category1 + ", " + data.location1;
   
-  if ()
+  if (data.type == 'all'){
+    loadAll(data);
+  }else if (data.type == 'finder') {
+    loadFinder(data);
+  }else if (data.type == 'seeker') {
+    loadSeeker(data);
+  }else {
+    console.log("Unexpected type");
+  }
 }
 
-function loadFinder() {
+function loadFinder(data) {
+  let xhr = new XMLHttpRequest();
   
 }
 
-function loadSeeker() {
+function loadSeeker(data) {
   
 }
 
-function loadAll() {
+function loadAll(data) {
   
 }
