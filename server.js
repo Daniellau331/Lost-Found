@@ -290,6 +290,23 @@ let storage = multer.diskStorage({
 
 let upload = multer({storage: storage});
 
+// Also serve static files out of /images
+app.use("/images",express.static('images'));
+
+// Next, the the two POST AJAX queries
+let filename = ""
+// Handle a post request to upload an image. 
+app.post('/upload', upload.single('newImage'), function (request, response) {
+  console.log("Recieved",request.file.originalname,request.file.size,"bytes")
+  if(request.file) {
+    // file is automatically stored in /images, 
+    // even though we can't see it. 
+    // We set this up when configuring multer
+    filename = '/images/'+request.file.originalname;
+    response.end("recieved "+request.file.originalname);
+  }
+  else throw 'error';
+});
 
 
 
