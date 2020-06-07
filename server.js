@@ -286,6 +286,18 @@ app.get('/checkdb', function (req, res, next){
   });
 });
 
+// app.use(express.json());
+app.post('/dbInsert', function (req, res, next) {
+  console.log("POST: dbInsert");
+  console.log(req.body);
+  let cmd = "INSERT INTO dataTable (name, image, color, font, message) VALUES (?,?,?,?,?)";
+  db.run(cmd, req.body.name, req.body.image, req.body.color, req.body.font, req.body.message, function(err){
+    if(err) {console.log(err.message);next();}
+    else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
+  });
+  
+});
+
 
 let storage = multer.diskStorage({
   destination: function (req, file, cb) {
