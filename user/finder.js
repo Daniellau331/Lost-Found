@@ -1,5 +1,5 @@
 // GLOBAL VARs
-var coords, map, map2 ,marker;
+var coords, map, map2, marker;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -12,54 +12,81 @@ script.defer = true;
 script.async = true;
 
 function initMap() {
+  var myLatlng = new google.maps.LatLng(38.5367859,-121.7553711);
   // SET MAP PROPERTIES
   var mapProp = {
-    center: new google.maps.LatLng(38.5367859, -121.7553711), // USE USER GPS LOCATION
+    center: myLatlng,
+    // center: new google.maps.LatLng(38.5367859, -121.7553711), // USE USER GPS LOCATION
     zoom: 15 // LARGER IS ZOOM IN
   };
 
   // INIT MAP
   map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
   map2 = new google.maps.Map(document.getElementById("googleMap2"), mapProp);
-  
-  marker = new google.maps.Marker();
-  marker.setDraggable(true);
-  marker.setPosition(map.center);
-  marker.setMap(map);
 
-  
-  marker.addListener("dragend", function() {
-    map.setCenter(marker.getPosition());
-    let url = "/getAddress?lat=" + marker.getPosition().lat() + "&lng=" + marker.getPosition().lng();
+  var myMarker = new google.maps.Marker({
+    position: myLatlng,
+    map: map,
+    title: "Pune"
+  });
+
+  var myMarker2 = new google.maps.Marker({
+    position: myLatlng,
+    map: map2,
+    title: "Noida"
+  });
+
+  myMarker = new google.maps.Marker();
+  myMarker.setDraggable(true);
+  myMarker.setPosition(map.center);
+  myMarker.setMap(map);
+
+  myMarker2 = new google.maps.Marker();
+  myMarker2.setDraggable(true);
+  myMarker2.setPosition(map.center);
+  myMarker2.setMap(map);
+
+  myMarker.addListener("dragend", function() {
+    map.setCenter(myMarker.getPosition());
+    let url =
+      "/getAddress?lat=" +
+      myMarker.getPosition().lat() +
+      "&lng=" +
+      myMarker.getPosition().lng();
     // console.log(marker.getPosition().lat());
     // console.log(marker.getPosition().lng());
     // console.log(url);
     fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      document.getElementById('location').value = data.results[0].formatted_address;
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        document.getElementById("location").value =
+          data.results[0].formatted_address;
+      });
   });
-};
-
-
-function search(){
-  let url = "/searchAddress?input=" + document.getElementsByClassName('location').value + ",Davis";
-  fetch(url)
-    .then(res=>res.json())
-    .then(data=>{
-      console.log(data);
-      document.getElementById('location').value = data.candidates[0].formatted_address;
-      marker.setPosition(data.candidates[0].geometry.location);
-      map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
-    })
+  
+  
 }
 
+function search() {
+  let url =
+    "/searchAddress?input=" +
+    document.getElementsByClassName("location").value +
+    ",Davis";
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      document.getElementById("location").value =
+        data.candidates[0].formatted_address;
+      marker.setPosition(data.candidates[0].geometry.location);
+      map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
+    });
+}
 
-const search_bar1 = document.getElementById('location');
+const search_bar1 = document.getElementById("location");
 
-search_bar1.addEventListener('change',search);
+search_bar1.addEventListener("change", search);
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
