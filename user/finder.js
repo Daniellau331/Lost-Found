@@ -1,3 +1,4 @@
+/
 // GLOBAL VARs
 var coords, map, map2, myMarker, myMarker2;
 
