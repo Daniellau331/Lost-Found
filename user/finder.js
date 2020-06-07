@@ -1,5 +1,5 @@
 // GLOBAL VARs
-var coords, map, marker;
+var coords, map, map2 marker;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -19,8 +19,9 @@ function initMap() {
   };
 
   // INIT MAP
-  map = new google.maps.Map(document.getElementsByClassName("googleMap"), mapProp);
-  console.log(document.getElementsByClassName("googleMap"));
+  map = new google.maps.Map(document.getElementsById("googleMap"), mapProp);
+  map2 = new google.maps.Map(document.getElementsById("googleMap2"), mapProp);
+  
   marker = new google.maps.Marker();
   marker.setDraggable(true);
   marker.setPosition(map.center);
