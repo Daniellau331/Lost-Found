@@ -310,6 +310,7 @@ app.post('/seekerInsert', function (req, res, next) {
 });
 
 // db.run("DROP TABLE userTable");
+app.get('/')
 
 
 let storage = multer.diskStorage({
