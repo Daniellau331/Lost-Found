@@ -124,3 +124,14 @@ function search2() {
 document.head.appendChild(script);
 
 //
+
+
+function searching() {
+  let date1 = document.getElementById("date1");
+  let date2 = document.getElementById("date2");
+  let time1 = document.getElementById("time1");
+  let time2 = document.getElementById("time2");
+  let category1 = document.getElementById("category1");
+  let location1
+  
+}
