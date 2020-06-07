@@ -311,7 +311,7 @@ app.post('/seekerInsert', function (req, res, next) {
 
 // db.run("DROP TABLE userTable");
 app.get('/finderGet', function (req, res, next){
-  console.log("POST: finderGet");
+  console.log("GET: finderGet");
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
@@ -325,9 +325,24 @@ app.get('/finderGet', function (req, res, next){
 });
 
 app.get('/seekerGet', function (req, res, next){
-  console.log("POST: seekerGet");
+  console.log("GET: seekerGet");
   console.log(req.body);
-  let cmd = "SELECT * FROM userTable WHERE type='seeker'";
+  let date1 = req.query.date1;
+  let date2 = req.query.date2;
+  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND type='seeker'";
+  db.all(cmd, function(err, rows){
+    if(err){console.log(err.message); next();}
+    else {res.json(rows); console.log(rows);}
+  });
+});
+
+
+app.get('/allGet', function (req, res, next){
+  console.log("GET: allGet");
+  console.log(req.body);
+  let date1 = req.query.date1;
+  let date2 = req.query.date2;
+  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2;
   db.all(cmd, function(err, rows){
     if(err){console.log(err.message); next();}
     else {res.json(rows); console.log(rows);}

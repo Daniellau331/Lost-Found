@@ -22,8 +22,8 @@ window.onload = function () {
   let day1 = Number(data.date1.split('-')[2]);
   let day2 = Number(data.date2.split('-')[2]);
   document.getElementById('searchResult').innerHTML = monthNames[month1] + " " + day1 + nth(day1) + " - " + monthNames[month2] + " " + day2 + nth(day2) + ", " + data.category1 + ", " + data.location1;
-
-
+  
+  if ()
 }
 
 function loadFinder() {
