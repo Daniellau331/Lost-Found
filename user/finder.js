@@ -1,5 +1,5 @@
 // GLOBAL VARs
-var coords, map, map2, marker;
+var coords, map, map2, myMarker, myMarker2;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -24,27 +24,21 @@ function initMap() {
   map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
   map2 = new google.maps.Map(document.getElementById("googleMap2"), mapProp);
 
-  var myMarker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    title: "Pune"
+  myMarker = new google.maps.Marker({
+    position: myLatlng,   
   });
 
-  var myMarker2 = new google.maps.Marker({
+  myMarker2 = new google.maps.Marker({
     position: myLatlng,
-    map: map2,
-    title: "Noida"
   });
 
-  myMarker = new google.maps.Marker();
   myMarker.setDraggable(true);
   myMarker.setPosition(map.center);
   myMarker.setMap(map);
 
-  myMarker2 = new google.maps.Marker();
   myMarker2.setDraggable(true);
-  myMarker2.setPosition(map.center);
-  myMarker2.setMap(map);
+  myMarker2.setPosition(map2.center);
+  myMarker2.setMap(map2);
 
   myMarker.addListener("dragend", function() {
     map.setCenter(myMarker.getPosition());
