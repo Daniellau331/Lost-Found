@@ -41,14 +41,14 @@ function sendGetRequest(selectedFile) {
   xhr.open("GET","sendUploadToAPI");
   
   // Add an event listener for when the HTTP response is loaded
-  // xhr.addEventListener("load", function() {
-  //     if (xhr.status == 200) {  // success
-  //       console.log("MESSSSSSAGE"+xhr.responseText);
-  //       showMsg("goodMessage",xhr.responseText);
-  //     } else { // failure
-  //       showMsg("badMessage",xhr.responseText);
-  //     }
-  // });
+  xhr.addEventListener("load", function() {
+      if (xhr.status == 200) {  // success
+        console.log("MESSSSSSAGE"+xhr.responseText);
+        // showMsg("goodMessage",xhr.responseText);
+      } else { // failure
+        // showMsg("badMessage",xhr.responseText);
+      }
+  });
   xhr.onloadend = function(e){
     // let newImage = document.querySelector("#cardImg");
     // newImage.src = "http://ecs162.org:3000/images/zroyu/"+selectedFile.name;
