@@ -287,11 +287,11 @@ app.get('/checkdb', function (req, res, next){
 });
 
 // app.use(express.json());
-app.post('/dbInsert', function (req, res, next) {
-  console.log("POST: dbInsert");
+app.post('/finderInsert', function (req, res, next) {
+  console.log("POST: finderInsert");
   console.log(req.body);
-  let cmd = "INSERT INTO dataTable (name, image, color, font, message) VALUES (?,?,?,?,?)";
-  db.run(cmd, req.body.name, req.body.image, req.body.color, req.body.font, req.body.message, function(err){
+  let cmd = "INSERT INTO dataTable (type, title, category, description, img, date, time, location) VALUES (?,?,?,?,?,?,?,?)";
+  db.run(cmd, "finder", req.body.title, req.body.category, req.body.description, req.body.attachment, req.body.date, req.body.time, req.body.location, function(err){
     if(err) {console.log(err.message);next();}
     else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
   });
