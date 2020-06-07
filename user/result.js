@@ -50,7 +50,18 @@ function loadFinder(data) {
 }
 
 function loadSeeker(data) {
-  
+  let xhr = new XMLHttpRequest();
+  let link_query = "?date1="+data.date1 + "&time1="+data.time1+"&date2="+data.date2 + "&time2="+data.time2+"&category="+data.category1;
+  console.log(link_query);
+  xhr.open("GET", '/seekerGet'+ link_query);
+  xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8"); 
+  xhr.onloadend = function(e) {
+    console.log(xhr.responseText);
+    // responseText is a string
+    let returnData = JSON.parse(xhr.responseText)[0];
+    console.log(returnData);
+  }
+  xhr.send(null);
 }
 
 function loadAll(data) {
