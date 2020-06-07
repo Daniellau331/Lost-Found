@@ -291,7 +291,12 @@ let storage = multer.diskStorage({
 let upload = multer({storage: storage});
 
 
-// Google map api
+
+
+
+
+
+// Google map api start
 // USE REVERSE GEOCODING TO GET ADDRESS
 // SEE https://developers.google.com/maps/documentation/geocoding/intro#reverse-example
 app.get("/getAddress", (req, res) => {
@@ -318,4 +323,5 @@ app.get("/searchAddress", (req, res) => {
 })
 
 
+// Google map api end
 
