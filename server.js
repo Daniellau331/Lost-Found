@@ -315,9 +315,9 @@ app.get('/finderGet', function (req, res, next){
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
-  let time1 = req.query.time1;
-  let time2 = req.query.time2;
-  let cmd = "SELECT * FROM userTable WHERE type='finder' AND date BETWEEN";
+  // let time1 = req.query.time1;
+  // let time2 = req.query.time2;
+  let cmd = "SELECT * FROM userTable WHERE date BETWEEN "+ date1 + " AND " + date2;
   db.all(cmd, function(err, rows){
     if(err){console.log(err.message); next();}
     else {res.json(rows); console.log(rows);}
