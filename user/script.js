@@ -15,7 +15,7 @@ document.getElementById("searchBar").addEventListener("click", function(){
 
 document.getElementById("attachment").addEventListener("change", function(){
   // get the file with the file dialog box
-  const selectedFile = document.querySelector('#imgUpload').files[0];
+  const selectedFile = document.getElementById("attachment").files[0];
   // store it in a FormData object
   const formData = new FormData();
   formData.append('newImage',selectedFile, selectedFile.name);
