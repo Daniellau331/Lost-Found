@@ -35,5 +35,4 @@ document.getElementById("attachment").addEventListener("change", function(){
   
   // actually send the request
   xhr.send(formData);
-  
 });

@@ -19,7 +19,7 @@ function initMap() {
   };
 
   // INIT MAP
-  map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  map = new google.maps.Map(document.getElementById("googleMap2"), mapProp);
 
   marker = new google.maps.Marker();
   marker.setDraggable(true);
