@@ -311,6 +311,7 @@ app.post('/upload', upload.single('newImage'), function (request, response) {
     // even though we can't see it. 
     // We set this up when configuring multer
     filename = '/images/'+request.file.originalname;
+    console.log("newfile name:"+filename);
     response.end("recieved "+request.file.originalname);
   }
   else throw 'error';
@@ -318,6 +319,7 @@ app.post('/upload', upload.single('newImage'), function (request, response) {
 
 // fire off the file upload if we get this "GET"
 app.get("/sendUploadToAPI", function(request, response){
+  console.log("uploadtoAPI filename:"+filename);
   sendMediaStore(filename, request, response);
   fs.unlink(filename.replace("/images/","images/"), (err) => {
     if(err){console.log("ERROR DELETE:"+ err.message);}
