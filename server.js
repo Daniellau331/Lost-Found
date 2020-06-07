@@ -355,21 +355,40 @@ app.get('/seekerGet', function (req, res, next){
   
 });
 
+app.get('/testAll', function (req, res, next){
+  console.log("GET: testAll");
+  let date1 = req.query.date1;
+  let date2 = req.query.date2;
+  console.log("date1:"+date1);
+  console.log("date2:"+date2);
+  let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2;
+  db.all(cmd, function(err, rows){
+    if(err){console.log(err.message); next();}
+    else {res.json(rows); console.log(rows);}
+  });
+});
+
 
 app.get('/allGet', function (req, res, next){
   console.log("GET: allGet");
   console.log(req.body);
   let date1 = req.query.date1;
   let date2 = req.query.date2;
+  let time1 = req.query.time1;
+  let time2 = req.query.time2;
+  let combine1 = date1 + " " + time1;
+  let combine2 = date2 + " " + time2;
+  console.log("combine1:" + combine1);
+  console.log("combine2:" + combine2);
   let category = req.query.category;
   if(category == ''){
-    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2;
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ combine1 + " AND date<=" + combine2;
     db.all(cmd, function(err, rows){
       if(err){console.log(err.message); next();}
       else {res.json(rows); console.log(rows);}
     });
   }else {
-    let cmd = "SELECT * FROM userTable WHERE date>= "+ date1 + " AND date<=" + date2 + " AND category="+category;
+    let cmd = "SELECT * FROM userTable WHERE date>= "+ combine1 + " AND date<=" + combine2 + " AND category="+category;
     db.all(cmd, function(err, rows){
       if(err){console.log(err.message); next();}
       else {res.json(rows); console.log(rows);}
