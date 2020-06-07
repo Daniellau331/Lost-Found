@@ -1,5 +1,5 @@
 // GLOBAL VARs
-var coords, map, map2 marker;
+var coords, map, map2 ,marker;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -19,8 +19,8 @@ function initMap() {
   };
 
   // INIT MAP
-  map = new google.maps.Map(document.getElementsById("googleMap"), mapProp);
-  map2 = new google.maps.Map(document.getElementsById("googleMap2"), mapProp);
+  map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+  map2 = new google.maps.Map(document.getElementById("googleMap2"), mapProp);
   
   marker = new google.maps.Marker();
   marker.setDraggable(true);
@@ -38,7 +38,7 @@ function initMap() {
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      document.getElementsByClassName('location').value = data.results[0].formatted_address;
+      document.getElementById('location').value = data.results[0].formatted_address;
     })
   });
 };
@@ -50,16 +50,16 @@ function search(){
     .then(res=>res.json())
     .then(data=>{
       console.log(data);
-      document.getElementsByClassName('location').value = data.candidates[0].formatted_address;
+      document.getElementById('location').value = data.candidates[0].formatted_address;
       marker.setPosition(data.candidates[0].geometry.location);
       map.setCenter(marker.getPosition(data.candidates[0].geometry.location));
     })
 }
 
 
-const search_bar = document.getElementById('location');
+const search_bar1 = document.getElementById('location');
 
-search_bar.addEventListener('change',search);
+search_bar1.addEventListener('change',search);
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
