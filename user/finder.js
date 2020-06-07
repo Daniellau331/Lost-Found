@@ -1,4 +1,4 @@
-/
+// Google Map Api start
 // GLOBAL VARs
 var coords, map, map2, myMarker, myMarker2;
 
@@ -122,3 +122,5 @@ function search2() {
 
 // Append the 'script' element to 'head'
 document.head.appendChild(script);
+
+//
