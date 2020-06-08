@@ -147,9 +147,11 @@ app.get('/setcookie', requireUser,
       res.cookie('google-passport-example', new Date());
       
       if (req.user.userData == 1) {
-        
+        res.redirect('/user/home.html');
+      } else {
+        res.redirect("/?email=notUCD");
       }
-      res.redirect('/user/home.html');
+      
     //} else {
     //   res.redirect('/');
     //}
