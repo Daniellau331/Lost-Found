@@ -133,6 +133,7 @@ function searchAll() {
   let time2 = document.getElementById("time2").value;
   let category1 = document.getElementById("category1").value;
   let location1 = document.getElementById("location1").value;
-  let url = "result.html?date1="+ date1 +"&date2=" + date2 +"&time1=" + time1 +"&time2=" + time2 +"&category1=" + category1 +"&location1=" + location1 + "&type=all";
+  let url = "/user/result.html?date1="+ date1 +"&date2=" + date2 +"&time1=" + time1 +"&time2=" + time2 +"&category1=" + category1 +"&location1=" + location1 + "&type=all";
+  
   window.location.href = encodeURI(url);
 }
