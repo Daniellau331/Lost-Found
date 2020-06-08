@@ -79,8 +79,9 @@ function loadAll(data) {
   xhr.onloadend = function(e) {
     console.log(xhr.responseText);
     // responseText is a string
-    let returnData = JSON.parse(xhr.responseText)[0];
+    let returnData = JSON.parse(xhr.responseText);
     console.log(returnData);
+    console.log(returnData.length);
     var index;
     for(index = 0; index < returnData.length;index++){
       console.log("one time");
@@ -97,11 +98,11 @@ function addTag(data, i) {
   let category = data.category;
   let description = data.description;
   let location = data.location;
-  let img = data.img;
+  let img = "http://ecs162.org:3000/images/zroyu/"+data.img;
   let div = document.getElementById('allTags');
   let date = data.date + " " + data.time;
   if (type == "finder") {
-    if(img != ''){
+    if(data.img != ''){
       div.innerHTML += "<div class='collapsible lightyellow'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
       + i + "' class='content'><img src=" + img + " class='itemImg'/><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
         +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
@@ -113,7 +114,7 @@ function addTag(data, i) {
       + description + "</p></div></div></div>";
     }
   }else if (type == "seeker") {
-    if(img != ''){
+    if(data.img != ''){
       div.innerHTML += "<div class='collapsible lightblue'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
       + i + "' class='content'><img src=" + img + " class='itemImg'/><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
         +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
@@ -127,4 +128,21 @@ function addTag(data, i) {
   }else{
     console.log("Unexpected type in adding Tag")
   }
+}
+
+function expand(id) {
+  var cur_content = document.getElementById("content"+id);
+  var button = document.getElementById("button"+id);
+  
+  console.log(cur_content);
+  if(cur_content.style.display == "flex"){
+    cur_content.style.display = "none";
+    button.innerHTML = "More";
+    console.log("flex");
+  }else{
+    cur_content.style.display = "flex";
+    button.innerHTML = "Less";
+    console.log("none");
+  }
+
 }
