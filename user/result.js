@@ -88,10 +88,21 @@ function loadAll(data) {
 
 
 function addTag(data) {
-//   let type = 
-//   if (type == "finder") {
+  let type = data.type;
+  let title = data.title;
+  let category = data.category;
+  let description = data.description;
+  let img = data.img;
+  let div = document.getElementById('allTags');
+  if (type == "finder") {
+    if(img == ''){
+      div.innerHTML += 
+    }else {
+      
+    }
+  }else if (type == "seeker") {
     
-//   }else if (type == "seeker") {
-    
-//   }
+  }else{
+    console.log("Unexpected type in adding Tag")
+  }
 }

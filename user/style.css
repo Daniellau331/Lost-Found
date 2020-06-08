@@ -320,3 +320,11 @@ input[type=date], input[type=time] {
 p {
   margin-top: 10px;
 }
+
+@media screen and (max-width: 700px) {
+  .frame {
+    margin: 0.5em 2em 0.5em 2em;
+  }
+  
+ 
+}
