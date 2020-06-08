@@ -1,6 +1,7 @@
 // Google Map Api start
 // GLOBAL VARs
 var coords, map, map2, myMarker, myMarker2;
+var google;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
@@ -134,6 +135,17 @@ function searchAll() {
   let category1 = document.getElementById("category1").value;
   let location1 = document.getElementById("location1").value;
   let url = "/user/result.html?date1="+ date1 +"&date2=" + date2 +"&time1=" + time1 +"&time2=" + time2 +"&category1=" + category1 +"&location1=" + location1 + "&type=all";
-  
   window.location.href = encodeURI(url);
+}
+
+function google(){
+  let date1 = document.getElementById("date1").value;
+  let date2 = document.getElementById("date2").value;
+  let time1 = document.getElementById("time1").value;
+  let time2 = document.getElementById("time2").value;
+  let category1 = document.getElementById("category1").value;
+  let location1 = document.getElementById("location1").value;
+  let url = "/user/result.html?date1="+ date1 +"&date2=" + date2 +"&time1=" + time1 +"&time2=" + time2 +"&category1=" + category1 +"&location1=" + location1 + "&type=all";
+  window.location.href = encodeURI(url);
+  
 }

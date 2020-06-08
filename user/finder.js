@@ -1,6 +1,7 @@
 // Google Map Api start
 // GLOBAL VARs
 var coords, map, map2, myMarker, myMarker2;
+var google;
 
 // DYNAMIC LOAD MAPS API
 // https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
