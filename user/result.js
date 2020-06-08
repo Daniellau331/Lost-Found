@@ -1,3 +1,8 @@
+document.getElementById("lafLogo").addEventListener("click", function(){
+  window.location.href = "home.html";
+});
+
+
 window.onload = function () {
   var url = decodeURI(document.location.href),
         params = url.split('?')[1].split('&'),

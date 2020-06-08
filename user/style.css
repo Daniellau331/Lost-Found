@@ -188,3 +188,126 @@ input[type=date], input[type=time] {
 #searchBar {
   cursor: pointer;
 }
+
+.searchLogo {
+  height: 3vh;
+  margin: 5px;
+  transform: scaleX(-1);
+}
+
+
+
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+/*   padding: 10px; */
+}
+
+.titleText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: medium;
+  margin-left: 5px;
+}
+
+/* .collapse_bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.titleHead {
+  width: 2vh;
+} */
+
+.moreBtn {
+  width: 15%;
+  background-color: Transparent;
+  color:#142a50;
+  border:none;
+  height:100%;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: medium;
+  outline:none;
+}
+
+
+/* .collapsible {
+  background: #daab27;
+} */
+/* .lightyellow {
+  background: #feebb1;
+}
+
+.lightblue {
+  background: #b3c1d1;
+} */
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+/*   background-color: #daab27; */
+/*   background: #daab27; */
+  color: #444;
+/*   cursor: pointer; */
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  margin: 10px;
+}
+
+
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  flex-direction: row;
+/*   justify-content: space-around; */
+  overflow: hidden;
+/*   background-color: #f1f1f1; */
+}
+
+.itemImg {
+  width: 40vh;
+  margin: 15px;
+}
+
+/* .content{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+} */
+
+.info {
+  margin: 10px;
+  display: block;
+}
+
+.line {
+  display: flex;
+  flex-direction: row;
+}
+
+.firstText {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: small;
+  margin: 5px;
+}
+
+.secondText ,p{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+  font-size: small;
+  margin: 5px;
+}
+
+p {
+  margin-top: 10px;
+}

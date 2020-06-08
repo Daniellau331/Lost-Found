@@ -51,6 +51,7 @@ h2 {
   border-radius: 10px;
   margin: 15px;
   cursor: pointer;
+  outline:none;
 }
 
 .finder{
