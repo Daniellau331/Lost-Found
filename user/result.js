@@ -87,7 +87,7 @@ function loadAll(data) {
 }
 
 
-function addTag(data) {
+function addTag(data, i) {
   let type = data.type;
   let title = data.title;
   let category = data.category;
@@ -96,7 +96,8 @@ function addTag(data) {
   let div = document.getElementById('allTags');
   if (type == "finder") {
     if(img == ''){
-      div.innerHTML += 
+      div.innerHTML += "<div class='collapsible lightyellow'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
+      + i + "' class='content'><img src=" + img + " class='itemImg'/>"
     }else {
       
     }
