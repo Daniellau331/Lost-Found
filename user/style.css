@@ -102,6 +102,11 @@ textarea {
 input[type=file] {
   width: 100%;
   margin: 6px 8px 16px 8px;
+  cursor: pointer;
+}
+
+.googleMap {
+  margin: 12px 8px;
 }
 
 .finder {
@@ -127,6 +132,7 @@ input[type=file] {
   color: white;
   padding: 0.5em 1em;
 /*   margin: 0 20px; */
+  cursor: pointer;
 }
 
 
@@ -177,4 +183,8 @@ input[type=date], input[type=time] {
   /*when navigating through the items using the arrow keys:*/
   background-color: DodgerBlue !important;
   color: #ffffff;
+}
+
+#searchBar {
+  cursor: pointer;
 }
