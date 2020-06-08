@@ -268,7 +268,7 @@ function requireLogin (req, res, next) {
 
 // DB
 // CREATE DB
-const db = new sqlite3.Database("test.db", (err) => {
+const db = new sqlite3.Database("test2.db", (err) => {
   if(err) {
     console.log(err.message);
   } else {
