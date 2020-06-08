@@ -73,7 +73,7 @@
                 <div class = "googleMap" id="googleMap" style="width:100%;height:400px;"></div>
 
                 <div class="endDiv">
-                  <input type="submit" value="Submit" class="seeker smallBtn">
+                  <input type="submit" value="Submit" class="seeker smallBtn" >
                 </div>
 
               </div>
@@ -135,7 +135,14 @@
               <div class = "googleMap" id="googleMap2" style="width:100%;height:400px;"></div>
               
               <div class="endDiv">
-                <input type="submit" value="Search" class="seeker smallBtn" onclick="google()">
+<!--                 <input type="submit" value="Search" class="seeker smallBtn" onclick="searchAll()"> -->
+                <input
+                  type="button"
+                  value="Search"
+                  id="searchBtn"
+                  class="seeker smallBtn"
+                  onclick="searchAll()"
+                />
               </div>
               
             </form>
