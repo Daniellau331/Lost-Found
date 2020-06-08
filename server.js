@@ -128,7 +128,7 @@ app.get('/auth/google', passport.authenticate('google'));
 // or, if failure, it goes back to the public splash page. 
 app.get('/auth/accepted', 
   passport.authenticate('google', 
-    { successRedirect: '/setcookie', failureRedirect: '/' }
+    { successRedirect: '/setcookie', failureRedirect: '/?email=notUCD' }
   )
 );
 
@@ -145,6 +145,10 @@ app.get('/setcookie', requireUser,
   
       // set a public cookie; the session cookie was already set by Passport
       res.cookie('google-passport-example', new Date());
+      
+      if (req.user.userData == 1) {
+        
+      }
       res.redirect('/user/home.html');
     //} else {
     //   res.redirect('/');
@@ -204,6 +208,10 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     } else {
       console.log("UCDAVIS NO");
       dbRowID = 2;
+      request.get('https://accounts.google.com/o/oauth2/revoke', {
+        qs:{token: accessToken }},  function (err, res, body) {
+        console.log("revoked token");
+        });
     }
 
     done(null, dbRowID); 
@@ -238,7 +246,7 @@ passport.deserializeUser((dbRowID, done) => {
 function requireUser (req, res, next) {
   console.log("require user",req.user);
   console.log("REQUIRE USER:", req.user.userData);
-  if (!req.user || req.user.userData == 2) {
+  if (!req.user) {
     res.redirect('/');
   } else {
     console.log("user is",req.user);
