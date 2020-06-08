@@ -193,7 +193,9 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     // and to store him in DB if not already there. 
     // Second arg to "done" will be passed into serializeUser,
     // should be key to get user out of database.
-
+    console.log("GET EMAIL:"+profile.emails[0].value);
+    let getEmail = profile.emails[0].value;
+  
     let dbRowID = 1;  // temporary! Should be the real unique
     // key for db Row for this user in DB table.
     // Note: cannot be zero, has to be something that evaluates to
