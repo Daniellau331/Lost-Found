@@ -1,28 +1,31 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-sqlite",
+  "name": "google-passport-example",
   "version": "0.0.1",
-  "description": "A simple Node app with SQLite as a database management system, instantly up and running.",
+  "description": "an example app implementing google oauth with passport",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "sqlite3": "^4.2.0"
+    "body-parser": "^1.16.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "passport": "^0.3.2",
+    "passport-google-oauth20": "*",
+    "sqlite3": "^4.2.0",
+    "multer": "^1.4.2",
+    "form-data": "^3.0.0",
+    "request": "^2.88.2"
   },
   "engines": {
-    "node": "12.x"
+    "node": "6.9.1"
   },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/hello-sqlite"
-  },
-  "license": "MIT",
   "keywords": [
     "node",
-    "glitch",
-    "express"
+    "express",
+    "google",
+    "oauth",
+    "passport"
   ]
 }
