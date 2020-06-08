@@ -1,5 +1,11 @@
 ECS 162 Project
 
-We meet almost all the requirements (not UCDavis email can't login and give error message, create db, send image to ecs162 server, select )
-But when we try to redirect after clicking "submit" button, there are some strange errors presenting the pages to result page.
-The finder's search button works fine. 
+We meet almost all the requirements:
+1. not UCDavis email can't login and give error message
+2. create db
+3. send image to ecs162 server
+4. select column from db by certain condition
+5. transfer search data from db into mulptile tags in result page
+But when we try to redirect after clicking "submit" button, there are some strange errors presenting  pages to result page.
+The finder's search button works fine if you want to test it.
+We really try very hard to achieve those goals
