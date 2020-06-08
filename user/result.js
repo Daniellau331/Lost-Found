@@ -50,6 +50,7 @@ function loadFinder(data) {
     // responseText is a string
     let returnData = JSON.parse(xhr.responseText)[0];
     console.log(returnData);
+    console.log(returnData[0]);
   }
   xhr.send(null);
 }
@@ -80,6 +81,17 @@ function loadAll(data) {
     // responseText is a string
     let returnData = JSON.parse(xhr.responseText)[0];
     console.log(returnData);
+    
   }
   xhr.send(null);
+}
+
+
+function addTag(data) {
+//   let type = 
+//   if (type == "finder") {
+    
+//   }else if (type == "seeker") {
+    
+//   }
 }

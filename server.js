@@ -309,7 +309,7 @@ app.post('/finderInsert', function (req, res, next) {
   console.log("POST: finderInsert");
   console.log(req.body);
   let cmd = "INSERT INTO userTable (type, title, category, description, img, date, location) VALUES (?,?,?,?,?,?,?)";
-  db.run(cmd, "finder", req.body.title, req.body.category, req.body.description, "http://ecs162.org:3000/images/zroyu/"+req.body.attachment, req.body.date+" "+ req.body.time, req.body.location, function(err){
+  db.run(cmd, "finder", req.body.title, req.body.category, req.body.description, req.body.attachment, req.body.date+" "+ req.body.time, req.body.location, function(err){
     if(err) {console.log(err.message);next();}
     else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
   });
@@ -320,7 +320,7 @@ app.post('/seekerInsert', function (req, res, next) {
   console.log("POST: finderInsert");
   console.log(req.body);
   let cmd = "INSERT INTO userTable (type, title, category, description, img, date, time, location) VALUES (?,?,?,?,?,?,?,?)";
-  db.run(cmd, "seeker", req.body.title, req.body.category, req.body.description, "http://ecs162.org:3000/images/zroyu/"+req.body.attachment, req.body.date+" "+req.body.time, req.body.location, function(err){
+  db.run(cmd, "seeker", req.body.title, req.body.category, req.body.description, req.body.attachment, req.body.date+" "+req.body.time, req.body.location, function(err){
     if(err) {console.log(err.message);next();}
     else {res.send("ADDED"); console.log("ADDED:"+this.lastID);}
   });
