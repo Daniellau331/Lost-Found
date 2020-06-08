@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy(
   clientSecret: process.env.CLIENT_SECRET,
   callbackURL: 'https://ylx-laf-project.glitch.me/auth/accepted',  
   userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo', // where to go for info
-  scope: ['profile']  // the information we will ask for from Google
+  scope: ['profile', 'email']  // the information we will ask for from Google
 },
   // function to call to once login is accomplished, to get info about user from Google;
   // it is defined down below.
