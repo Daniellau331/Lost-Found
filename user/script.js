@@ -1,3 +1,7 @@
+document.getElementById("lafLogo").addEventListener("click", function(){
+  window.location.href = "home.html";
+});
+
 document.getElementById("nextBtn").addEventListener("click", function(){
   let firstSearch = document.getElementById("firstSearch");
   let secondSearch = document.getElementById("secondSearch");
