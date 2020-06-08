@@ -81,7 +81,11 @@ function loadAll(data) {
     // responseText is a string
     let returnData = JSON.parse(xhr.responseText)[0];
     console.log(returnData);
-    
+    var index;
+    for(index = 0; index < returnData.length;index++){
+      console.log("one time");
+      addTag(returnData[index], index);
+    }
   }
   xhr.send(null);
 }
@@ -92,17 +96,34 @@ function addTag(data, i) {
   let title = data.title;
   let category = data.category;
   let description = data.description;
+  let location = data.location;
   let img = data.img;
   let div = document.getElementById('allTags');
+  let date = data.date + " " + data.time;
   if (type == "finder") {
-    if(img == ''){
+    if(img != ''){
       div.innerHTML += "<div class='collapsible lightyellow'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
-      + i + "' class='content'><img src=" + img + " class='itemImg'/>"
+      + i + "' class='content'><img src=" + img + " class='itemImg'/><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
+        +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
+      + description + "</p></div></div></div>";
     }else {
-      
+      div.innerHTML += "<div class='collapsible lightyellow'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
+      + i + "' class='content'><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
+        +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
+      + description + "</p></div></div></div>";
     }
   }else if (type == "seeker") {
-    
+    if(img != ''){
+      div.innerHTML += "<div class='collapsible lightblue'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
+      + i + "' class='content'><img src=" + img + " class='itemImg'/><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
+        +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
+      + description + "</p></div></div></div>";
+    }else {
+      div.innerHTML += "<div class='collapsible lightblue'><div class='title'><div class='titleText'>" + title + "</div><button id='button" + i + "' onclick='expand(" + i + ")' class='moreBtn'>MORE</button></div><div id='content"
+      + i + "' class='content'><div class='info'><div class='line'><div class='firstText'>Category</div><div class='secondText'>"+ category
+        +"</div></div><div class='line'><div class='firstText'>Location</div><div class='secondText'>" + location + "</div></div><div class='line'><div class='firstText'>Date</div><div class='secondText'>"+ date + "</div></div><p>"
+      + description + "</p></div></div></div>";
+    }
   }else{
     console.log("Unexpected type in adding Tag")
   }
