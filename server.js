@@ -195,11 +195,16 @@ function gotProfile(accessToken, refreshToken, profile, done) {
     // should be key to get user out of database.
     console.log("GET EMAIL:"+profile.emails[0].value);
     let getEmail = profile.emails[0].value;
-  
     let dbRowID = 1;  // temporary! Should be the real unique
     // key for db Row for this user in DB table.
     // Note: cannot be zero, has to be something that evaluates to
     // True.  
+    if (getEmail.endsWith("ucdavis.edu")) {
+      console.log("UCDAVIS YES");
+    } else {
+      console.log("UCDAVIS NO");
+      dbRowID = 2;
+    }
 
     done(null, dbRowID); 
 }
@@ -226,13 +231,14 @@ passport.deserializeUser((dbRowID, done) => {
     // here is a good place to look up user data in database using
     // dbRowID. Put whatever you want into an object. It ends up
     // as the property "user" of the "req" object. 
-    let userData = {userData: "maybe data from db row goes here"};
+    let userData = {userData: dbRowID};
     done(null, userData);
 });
 
 function requireUser (req, res, next) {
-  console.log("require user",req.user)
-  if (!req.user) {
+  console.log("require user",req.user);
+  console.log("REQUIRE USER:", req.user.userData);
+  if (!req.user || req.user.userData == 2) {
     res.redirect('/');
   } else {
     console.log("user is",req.user);
